@@ -5,15 +5,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="自定义注解实战：简单的测试框架, Mao Qiu">
-    <meta name="description" content="利用注解来测试所写的方法中出现的异常在这里注解只是作为标识，检测程序只对带有Check的函数进行检测测试结果：
+    <meta name="description" content="注解基础注解的本质是一个接口，该接口默认继承Annotation接口
 
-写好我们需要测试的类
-
-package check;
-
-public class Calculator {
-
-    @Che">
+接口里面的成员方法称为注解的属性
+定义了属性，要在使用的时候给属性赋值
+如果定义属性时使用default关键字给属性默认初始值，则可以不进行赋值
+若只有一个属性且名为v">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -474,7 +471,39 @@ public class Calculator {
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>利用注解来测试所写的方法中出现的异常<br>在这里注解只是作为标识，检测程序只对带有Check的函数进行检测<br>测试结果：<br><img src="/2020/02/22/zi-ding-yi-zhu-jie-shi-zhan-jian-dan-de-ce-shi-kuang-jia/bug.png" alt="bug.png"></p>
+                <h2 id="注解基础"><a href="#注解基础" class="headerlink" title="注解基础"></a>注解基础</h2><p>注解的本质是一个接口，该接口默认继承Annotation接口</p>
+<ul>
+<li>接口里面的成员方法称为注解的属性</li>
+<li>定义了属性，要在使用的时候给属性赋值</li>
+<li>如果定义属性时使用default关键字给属性默认初始值，则可以不进行赋值</li>
+<li>若只有一个属性且名为value，则使用时可以直接写值</li>
+<li>数组赋值时使用 { } 包裹，数组只有一个值时可以不用 { }</li>
+</ul>
+<p>属性返回值的类型限制：</p>
+<ul>
+<li>基本数据类型</li>
+<li>String</li>
+<li>枚举</li>
+<li>注解</li>
+<li>以上类型的数组</li>
+</ul>
+<p>1.JDK中预定义注解</p>
+<ul>
+<li>@Override ：继承父类接口</li>
+<li>@Deprecated ：表示已过时的内容</li>
+<li>@SuppressWarning ：压制警告，一般传递参数为all，SuppressWarning(“all”)</li>
+</ul>
+<p>2.自定义注解</p>
+<ul>
+<li>元注解：用于描述注解的注解<ul>
+<li>@Target ：描述注解能够作用的位置</li>
+<li>@Retention ： 描述注解被保留的阶段</li>
+<li>@Documented ： 描述注解是否被抽取到api文档中</li>
+<li>@Inherited ： 描述注解是否被子类继承</li>
+</ul>
+</li>
+</ul>
+<h2 id="利用注解来测试所写的方法中出现的异常"><a href="#利用注解来测试所写的方法中出现的异常" class="headerlink" title="利用注解来测试所写的方法中出现的异常"></a>利用注解来测试所写的方法中出现的异常</h2><p>在这里注解只是作为标识，检测程序只对带有Check的函数进行检测<br>测试结果：<br><img src="/2020/02/22/zi-ding-yi-zhu-jie-shi-zhan-jian-dan-de-ce-shi-kuang-jia/bug.png" alt="bug.png"></p>
 <ul>
 <li>写好我们需要测试的类</li>
 </ul>
@@ -828,15 +857,12 @@ public class Calculator {
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            利用注解来测试所写的方法中出现的异常在这里注解只是作为标识，检测程序只对带有Check的函数进行检测测试结果：
+                            注解基础注解的本质是一个接口，该接口默认继承Annotation接口
 
-写好我们需要测试的类
-
-package check;
-
-public class Calculator {
-
-    @Che
+接口里面的成员方法称为注解的属性
+定义了属性，要在使用的时候给属性赋值
+如果定义属性时使用default关键字给属性默认初始值，则可以不进行赋值
+若只有一个属性且名为v
                         
                     </div>
                     <div class="publish-info">
