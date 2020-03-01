@@ -4,13 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="自定义注解实战：简单的测试框架, Mao Qiu">
-    <meta name="description" content="注解基础注解的本质是一个接口，该接口默认继承Annotation接口
+    <meta name="keywords" content="JDBC, Mao Qiu">
+    <meta name="description" content="JDBCJDBC：Java DataBase Connectivity Java数据库连接
 
-接口里面的成员方法称为注解的属性
-定义了属性，要在使用的时候给属性赋值
-如果定义属性时使用default关键字给属性默认初始值，则可以不进行赋值
-若只有一个属性且名为v">
+JDBC：SUN公司定义的一套操作所有关系型数据库的规则（接口），各个数据库厂商提供JDBC的实现类（数据库驱动），我们可以使用这套接口来编程，真">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>自定义注解实战：简单的测试框架 | Mao Qiu</title>
+    <title>JDBC | Mao Qiu</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -308,12 +305,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">自定义注解实战：简单的测试框架</h1>
+                    <h1 class="description center-align post-title">JDBC</h1>
                 </div>
             </div>
         </div>
@@ -430,16 +427,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%B3%A8%E8%A7%A3/">
-                                <span class="chip bg-color">注解</span>
+                            <a href="/tags/java/">
+                                <span class="chip bg-color">java</span>
                             </a>
                         
-                            <a href="/tags/Java/">
-                                <span class="chip bg-color">Java</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%B5%8B%E8%AF%95/">
-                                <span class="chip bg-color">测试</span>
+                            <a href="/tags/JDBC/">
+                                <span class="chip bg-color">JDBC</span>
                             </a>
                         
                     </div>
@@ -454,7 +447,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-22
+                    2020-03-01
                 </div>
                 
 
@@ -471,137 +464,49 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="注解基础"><a href="#注解基础" class="headerlink" title="注解基础"></a>注解基础</h2><p>注解的本质是一个接口，该接口默认继承Annotation接口</p>
+                <h2 id="JDBC"><a href="#JDBC" class="headerlink" title="JDBC"></a>JDBC</h2><p>JDBC：Java DataBase Connectivity Java数据库连接</p>
 <ul>
-<li>接口里面的成员方法称为注解的属性</li>
-<li>定义了属性，要在使用的时候给属性赋值</li>
-<li>如果定义属性时使用default关键字给属性默认初始值，则可以不进行赋值</li>
-<li>若只有一个属性且名为value，则使用时可以直接写值</li>
-<li>数组赋值时使用 { } 包裹，数组只有一个值时可以不用 { }</li>
-</ul>
-<p>属性返回值的类型限制：</p>
-<ul>
-<li>基本数据类型</li>
-<li>String</li>
-<li>枚举</li>
-<li>注解</li>
-<li>以上类型的数组</li>
-</ul>
-<p>1.JDK中预定义注解</p>
-<ul>
-<li>@Override ：继承父类接口</li>
-<li>@Deprecated ：表示已过时的内容</li>
-<li>@SuppressWarning ：压制警告，一般传递参数为all，SuppressWarning(“all”)</li>
-</ul>
-<p>2.自定义注解</p>
-<ul>
-<li>元注解：用于描述注解的注解<ul>
-<li>@Target ：描述注解能够作用的位置</li>
-<li>@Retention ： 描述注解被保留的阶段</li>
-<li>@Documented ： 描述注解是否被抽取到api文档中</li>
-<li>@Inherited ： 描述注解是否被子类继承</li>
-</ul>
+<li><p>JDBC：SUN公司定义的一套操作所有关系型数据库的规则（接口），各个数据库厂商提供JDBC的实现类（数据库驱动），我们可以使用这套接口来编程，真正执行的代码是驱动jar包中的实现类。</p>
+</li>
+<li><p>使用JDBC  </p>
 </li>
 </ul>
-<h2 id="利用注解来测试所写的方法中出现的异常"><a href="#利用注解来测试所写的方法中出现的异常" class="headerlink" title="利用注解来测试所写的方法中出现的异常"></a>利用注解来测试所写的方法中出现的异常</h2><p>在这里注解只是作为标识，检测程序只对带有Check的函数进行检测<br>测试结果：<br><img src="/2020/02/22/zi-ding-yi-zhu-jie-shi-zhan-jian-dan-de-ce-shi-kuang-jia/bug.png" alt="bug.png"></p>
-<ul>
-<li>写好我们需要测试的类</li>
-</ul>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> check<span class="token punctuation">;</span>
+<p>1.导入驱动jar包<br>2.注册驱动<br>3.获取数据库连接对象 Connection<br>4.定义sql<br>5.获取执行sql语句的对象 Statement<br>6.执行sql，接受返回结果<br>7.处理结果<br>8.释放资源</p>
+<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><pre class=" language-java"><code class="language-java">
+<span class="token keyword">package</span> JDBC<span class="token punctuation">;</span>
 
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Calculator</span> <span class="token punctuation">{</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>Connection<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>DriverManager<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>SQLException<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>Statement<span class="token punctuation">;</span>
 
-    <span class="token annotation punctuation">@Check</span>
-    <span class="token keyword">public</span>  <span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"1+0="</span><span class="token operator">+</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">+</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JdbcDemo1</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> ClassNotFoundException<span class="token punctuation">,</span> SQLException <span class="token punctuation">{</span>
 
-    <span class="token annotation punctuation">@Check</span>
-    <span class="token keyword">public</span>  <span class="token keyword">void</span> <span class="token function">sub</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"1-0="</span><span class="token operator">+</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">-</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
 
-    <span class="token annotation punctuation">@Check</span>
-    <span class="token keyword">public</span>  <span class="token keyword">void</span> <span class="token function">mul</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"1*0="</span><span class="token operator">+</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">*</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@Check</span>
-    <span class="token keyword">public</span>  <span class="token keyword">void</span> <span class="token function">div</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"1/0="</span><span class="token operator">+</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">/</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
-<ul>
-<li>自定义Check注解</li>
-</ul>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> check<span class="token punctuation">;</span>
-
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>ElementType<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Retention<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>RetentionPolicy<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Target<span class="token punctuation">;</span>
-
-<span class="token annotation punctuation">@Retention</span><span class="token punctuation">(</span>RetentionPolicy<span class="token punctuation">.</span>RUNTIME<span class="token punctuation">)</span>
-<span class="token annotation punctuation">@Target</span><span class="token punctuation">(</span>ElementType<span class="token punctuation">.</span>METHOD<span class="token punctuation">)</span>
-<span class="token keyword">public</span> @<span class="token keyword">interface</span> <span class="token class-name">Check</span> <span class="token punctuation">{</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<ul>
-<li>编写测试主函数</li>
-</ul>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> check<span class="token punctuation">;</span>
-
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>BufferedWriter<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>FileWriter<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>IOException<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>reflect<span class="token punctuation">.</span>InvocationTargetException<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>reflect<span class="token punctuation">.</span>Method<span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">/**
- *检测被加了Check注解的方法
- * 并把异常信息输出
- *
- */</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TestCheck</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">//创建对象</span>
-        Calculator c <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Calculator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//获取字节码文件</span>
-        Class <span class="token class-name">cls</span> <span class="token operator">=</span>c<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//获取成员方法</span>
-        Method<span class="token punctuation">[</span><span class="token punctuation">]</span> methods <span class="token operator">=</span> cls<span class="token punctuation">.</span><span class="token function">getMethods</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">int</span> number<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//记录出现异常的次数</span>
-        BufferedWriter bufferedWriter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedWriter</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileWriter</span><span class="token punctuation">(</span><span class="token string">"bug.txt"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token keyword">for</span> <span class="token punctuation">(</span>Method method<span class="token operator">:</span>methods<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">//判断方法上是否有Check注解</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>method<span class="token punctuation">.</span><span class="token function">isAnnotationPresent</span><span class="token punctuation">(</span>Check<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-                <span class="token comment" spellcheck="true">//是，运行</span>
-                <span class="token keyword">try</span> <span class="token punctuation">{</span>
-                    method<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                    <span class="token comment" spellcheck="true">//捕获异常</span>
-                    <span class="token comment" spellcheck="true">//记录文件信息</span>
-                    number<span class="token operator">++</span><span class="token punctuation">;</span>
-                    bufferedWriter<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>method<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">"出现了异常"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    bufferedWriter<span class="token punctuation">.</span><span class="token function">newLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    bufferedWriter<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"异常的名称："</span><span class="token operator">+</span>e<span class="token punctuation">.</span><span class="token function">getCause</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getSimpleName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    bufferedWriter<span class="token punctuation">.</span><span class="token function">newLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    bufferedWriter<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"异常的原因："</span><span class="token operator">+</span>e<span class="token punctuation">.</span><span class="token function">getCause</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    bufferedWriter<span class="token punctuation">.</span><span class="token function">newLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    bufferedWriter<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"---------------------------------------"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    bufferedWriter<span class="token punctuation">.</span><span class="token function">newLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-        bufferedWriter<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">"一共出现了"</span><span class="token operator">+</span>number<span class="token operator">+</span><span class="token string">"次异常"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        bufferedWriter<span class="token punctuation">.</span><span class="token function">flush</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        bufferedWriter<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
+        <span class="token comment" spellcheck="true">//注册jdbc驱动</span>
+        Class<span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"com.mysql.cj.jdbc.Driver"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//获取数据库的连接对象</span>
+        Connection connection <span class="token operator">=</span> DriverManager<span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token string">"jdbc:mysql://localhost:3306/db4"</span><span class="token punctuation">,</span> <span class="token string">"root"</span><span class="token punctuation">,</span> <span class="token string">"password"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//定义sql语句</span>
+        String sql<span class="token operator">=</span><span class="token string">"update stu set score = 56 where id = 1"</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//获取执行对象statement</span>
+        Statement statement <span class="token operator">=</span> connection<span class="token punctuation">.</span><span class="token function">createStatement</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//执行sql语句</span>
+        <span class="token keyword">int</span> i <span class="token operator">=</span> statement<span class="token punctuation">.</span><span class="token function">executeUpdate</span><span class="token punctuation">(</span>sql<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//处理结果</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//释放资源</span>
+        statement<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        connection<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
+
 </code></pre>
+<p>结果编译器报错了<br><img src="/2020/03/01/jdbc/%E9%94%99%E8%AF%AF.png" alt="错误.png"></p>
+<p>出现这个的原因是因为 mysql返回的时间总是有问题，比实际时间要早8小时。<br>在使用数据库加上代码</p>
+<pre class=" language-java"><code class="language-java">Connection connection <span class="token operator">=</span> DriverManager<span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token string">"jdbc:mysql://localhost:3306/db4?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=GMT%2B8&amp;useSSL=false"</span><span class="token punctuation">,</span> <span class="token string">"root"</span><span class="token punctuation">,</span> <span class="token string">"password"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>在jdbc连接的url后面加上serverTimezone=GMT即可解决问题，如果需要使用gmt+8时区，需要写成GMT%2B8</p>
 
             </div>
             <hr/>
@@ -627,7 +532,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://dullutus.github.io/2020/02/22/zi-ding-yi-zhu-jie-shi-zhan-jian-dan-de-ce-shi-kuang-jia/">http://dullutus.github.io/2020/02/22/zi-ding-yi-zhu-jie-shi-zhan-jian-dan-de-ce-shi-kuang-jia/</a>
+                    <a href="http://dullutus.github.io/2020/03/01/jdbc/">http://dullutus.github.io/2020/03/01/jdbc/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -665,16 +570,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%B3%A8%E8%A7%A3/">
-                                    <span class="chip bg-color">注解</span>
+                                <a href="/tags/java/">
+                                    <span class="chip bg-color">java</span>
                                 </a>
                             
-                                <a href="/tags/Java/">
-                                    <span class="chip bg-color">Java</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%B5%8B%E8%AF%95/">
-                                    <span class="chip bg-color">测试</span>
+                                <a href="/tags/JDBC/">
+                                    <span class="chip bg-color">JDBC</span>
                                 </a>
                             
                         </div>
@@ -840,9 +741,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/03/01/jdbc/">
                     <div class="card-image">
@@ -862,9 +764,9 @@ JDBC：SUN公司定义的一套操作所有关系型数据库的规则（接口�
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-01
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -873,6 +775,7 @@ JDBC：SUN公司定义的一套操作所有关系型数据库的规则（接口�
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -895,28 +798,29 @@ JDBC：SUN公司定义的一套操作所有关系型数据库的规则（接口�
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/06/ruan-kao-fu-xi/">
+                <a href="/2020/02/22/zi-ding-yi-zhu-jie-shi-zhan-jian-dan-de-ce-shi-kuang-jia/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="软考复习">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="自定义注解实战：简单的测试框架">
                         
-                        <span class="card-title">软考复习</span>
+                        <span class="card-title">自定义注解实战：简单的测试框架</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            计算机组成与体系结构计算机体系结构分类——Flynn
+                            注解基础注解的本质是一个接口，该接口默认继承Annotation接口
 
-单指令流单数据流：单处理器系统，老式PC机，多见于单片机系统。
-阵列处理机（典型单指令流多数据流代表）：适合处理数组类型的操作，例如：一条加法指令通过输入不同数据来得到一组结果。
-多指
+接口里面的成员方法称为注解的属性
+定义了属性，要在使用的时候给属性赋值
+如果定义属性时使用default关键字给属性默认初始值，则可以不进行赋值
+若只有一个属性且名为v
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-22
                             </span>
                         <span class="publish-author">
                             
@@ -925,6 +829,22 @@ JDBC：SUN公司定义的一套操作所有关系型数据库的规则（接口�
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%B3%A8%E8%A7%A3/">
+                        <span class="chip bg-color">注解</span>
+                    </a>
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%B5%8B%E8%AF%95/">
+                        <span class="chip bg-color">测试</span>
+                    </a>
+                    
                 </div>
                 
             </div>
