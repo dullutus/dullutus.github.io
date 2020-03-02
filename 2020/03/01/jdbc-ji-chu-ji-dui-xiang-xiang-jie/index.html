@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="JDBC, Mao Qiu">
+    <meta name="keywords" content="JDBC基础及对象详解, Mao Qiu">
     <meta name="description" content="JDBCJDBC：Java DataBase Connectivity Java数据库连接
 
 JDBC：SUN公司定义的一套操作所有关系型数据库的规则（接口），各个数据库厂商提供JDBC的实现类（数据库驱动），我们可以使用这套接口来编程，真">
@@ -15,7 +15,7 @@ JDBC：SUN公司定义的一套操作所有关系型数据库的规则（接口�
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>JDBC | Mao Qiu</title>
+    <title>JDBC基础及对象详解 | Mao Qiu</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -305,12 +305,12 @@ JDBC：SUN公司定义的一套操作所有关系型数据库的规则（接口�
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">JDBC</h1>
+                    <h1 class="description center-align post-title">JDBC基础及对象详解</h1>
                 </div>
             </div>
         </div>
@@ -503,10 +503,118 @@ JDBC：SUN公司定义的一套操作所有关系型数据库的规则（接口�
 <span class="token punctuation">}</span>
 
 </code></pre>
-<p>结果编译器报错了<br><img src="/2020/03/01/jdbc/%E9%94%99%E8%AF%AF.png" alt="错误.png"></p>
+<p>结果编译器报错了<br><img src="/2020/03/01/jdbc-ji-chu-ji-dui-xiang-xiang-jie/%E9%94%99%E8%AF%AF.png" alt="错误.png"></p>
 <p>出现这个的原因是因为 mysql返回的时间总是有问题，比实际时间要早8小时。<br>在使用数据库加上代码</p>
 <pre class=" language-java"><code class="language-java">Connection connection <span class="token operator">=</span> DriverManager<span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token string">"jdbc:mysql://localhost:3306/db4?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=GMT%2B8&amp;useSSL=false"</span><span class="token punctuation">,</span> <span class="token string">"root"</span><span class="token punctuation">,</span> <span class="token string">"password"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>在jdbc连接的url后面加上serverTimezone=GMT即可解决问题，如果需要使用gmt+8时区，需要写成GMT%2B8</p>
+<ul>
+<li><p>详解各个对象  </p>
+<ul>
+<li><p>DriverManager：驱动管理对象</p>
+<ul>
+<li>注册驱动（告诉程序应该使用哪一个数据库驱动）： com.mysql.cj.jdbc.Driver类中存在静态代码块调用DriverManager对象的registerDriver()函数来注册驱动</li>
+<li>获取数据库连接：static Connection getConnection(String url,String user,String password);  <ul>
+<li>rul：指定连接的路径（jdbc:mysql://ip地址(域名):端口号/数据库名称）  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Connection：数据库连接对象</p>
+<ul>
+<li>获取执行sql对象:  <ul>
+<li>Statement createStatement()</li>
+<li>PreparedStatement perparestatement(String sql)</li>
+</ul>
+</li>
+<li>管理事务：<ul>
+<li>开启事务：setAutoCommit(boolean autoCommit) :设置参数为false，则为开启事务</li>
+<li>提交事务：commit()</li>
+<li>回滚事务：rollback()</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Statement：执行sql对象</p>
+<ul>
+<li>boolean execute(String sql)：可以执行任意的sql</li>
+<li>int execute(String sql)：执行DML(insert,update,delete)语句，DDL(create,alter,drop)语句，返回值为影响的表中数据行数</li>
+<li>ResultSet executeQuery(String sql)：执行难DQL(select)语句</li>
+</ul>
+</li>
+<li><p>ResultSet：结果集对象，封装查询结果</p>
+<ul>
+<li>boolean next()：游标向下移动一行,如果下一行有数据则返回true，否则返回false</li>
+<li>getXXX(参数)：获取数据，如int getInt(),String getString()<ul>
+<li>参数：int 代表列的编号（从1开始），String：代表列的名称</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> JDBC<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>mysql<span class="token punctuation">.</span>cj<span class="token punctuation">.</span>x<span class="token punctuation">.</span>protobuf<span class="token punctuation">.</span>MysqlxDatatypes<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JdbcDemo3</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Connection root <span class="token operator">=</span>null<span class="token punctuation">;</span>
+        Statement st <span class="token operator">=</span>null<span class="token punctuation">;</span>
+        ResultSet resultSet <span class="token operator">=</span>null<span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//注册数据库</span>
+            Class<span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"com.mysql.cj.jdbc.Driver"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//获取数据库连接对象</span>
+            root <span class="token operator">=</span> DriverManager<span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token string">"jdbc:mysql://localhost:3306/db4?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=GMT%2B8&amp;useSSL=false"</span><span class="token punctuation">,</span> <span class="token string">"root"</span><span class="token punctuation">,</span> <span class="token string">"9624988464..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//定义sql</span>
+            String sql <span class="token operator">=</span> <span class="token string">"select * from stu "</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//获取执行sql对象</span>
+            st <span class="token operator">=</span> root<span class="token punctuation">.</span><span class="token function">createStatement</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//执行sql,得到结果集对象</span>
+            resultSet <span class="token operator">=</span> st<span class="token punctuation">.</span><span class="token function">executeQuery</span><span class="token punctuation">(</span>sql<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//解析结果集</span>
+            <span class="token keyword">while</span><span class="token punctuation">(</span>resultSet<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">int</span> id <span class="token operator">=</span> resultSet<span class="token punctuation">.</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                String name <span class="token operator">=</span> resultSet<span class="token punctuation">.</span><span class="token function">getString</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">double</span> score <span class="token operator">=</span> resultSet<span class="token punctuation">.</span><span class="token function">getDouble</span><span class="token punctuation">(</span><span class="token string">"score"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>id<span class="token operator">+</span><span class="token string">"--"</span><span class="token operator">+</span>name<span class="token operator">+</span><span class="token string">"--"</span><span class="token operator">+</span>score<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">ClassNotFoundException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">finally</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>resultSet <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                    resultSet<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>st <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                    st<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>resultSet <span class="token operator">!=</span>null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                    resultSet<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
 
             </div>
             <hr/>
@@ -532,7 +640,7 @@ JDBC：SUN公司定义的一套操作所有关系型数据库的规则（接口�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://dullutus.github.io/2020/03/01/jdbc/">http://dullutus.github.io/2020/03/01/jdbc/</a>
+                    <a href="http://dullutus.github.io/2020/03/01/jdbc-ji-chu-ji-dui-xiang-xiang-jie/">http://dullutus.github.io/2020/03/01/jdbc-ji-chu-ji-dui-xiang-xiang-jie/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -746,13 +854,13 @@ JDBC：SUN公司定义的一套操作所有关系型数据库的规则（接口�
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2020/03/01/jdbc/">
+                <a href="/2020/03/01/jdbc-ji-chu-ji-dui-xiang-xiang-jie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="JDBC">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="JDBC基础及对象详解">
                         
-                        <span class="card-title">JDBC</span>
+                        <span class="card-title">JDBC基础及对象详解</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
