@@ -560,6 +560,11 @@ JDBC：SUN公司定义的一套操作所有关系型数据库的规则（接口�
 <span class="token keyword">import</span> java<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
 
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JdbcDemo3</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/*
+    *异常处理
+    *资源释放
+    *
+    */</span>
     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         Connection root <span class="token operator">=</span>null<span class="token punctuation">;</span>
         Statement st <span class="token operator">=</span>null<span class="token punctuation">;</span>
