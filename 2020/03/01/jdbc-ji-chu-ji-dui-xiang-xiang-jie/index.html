@@ -507,9 +507,7 @@ JDBC：SUN公司定义的一套操作所有关系型数据库的规则（接口�
 <p>出现这个的原因是因为 mysql返回的时间总是有问题，比实际时间要早8小时。<br>在使用数据库加上代码</p>
 <pre class=" language-java"><code class="language-java">Connection connection <span class="token operator">=</span> DriverManager<span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span><span class="token string">"jdbc:mysql://localhost:3306/db4?useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=GMT%2B8&amp;useSSL=false"</span><span class="token punctuation">,</span> <span class="token string">"root"</span><span class="token punctuation">,</span> <span class="token string">"password"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>在jdbc连接的url后面加上serverTimezone=GMT即可解决问题，如果需要使用gmt+8时区，需要写成GMT%2B8</p>
-<ul>
-<li><p>详解各个对象  </p>
-<ul>
+<h2 id="详解各个对象"><a href="#详解各个对象" class="headerlink" title="详解各个对象"></a>详解各个对象</h2><ul>
 <li><p>DriverManager：驱动管理对象</p>
 <ul>
 <li>注册驱动（告诉程序应该使用哪一个数据库驱动）： com.mysql.cj.jdbc.Driver类中存在静态代码块调用DriverManager对象的registerDriver()函数来注册驱动</li>
@@ -546,8 +544,6 @@ JDBC：SUN公司定义的一套操作所有关系型数据库的规则（接口�
 <li>boolean next()：游标向下移动一行,如果下一行有数据则返回true，否则返回false</li>
 <li>getXXX(参数)：获取数据，如int getInt(),String getString()<ul>
 <li>参数：int 代表列的编号（从1开始），String：代表列的名称</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
