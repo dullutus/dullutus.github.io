@@ -548,6 +548,24 @@ JDBC：SUN公司定义的一套操作所有关系型数据库的规则（接口�
 </li>
 </ul>
 </li>
+<li><p>PreparedStatement：执行sql的对象</p>
+<ul>
+<li><p>此方法可以解决sql的注入问题：在拼接sql时，有一些特殊的关键字参与字符串的拼接会造成安全问题</p>
+<ul>
+<li>例如登陆时输入密码  a’ or ‘a’ = ‘a</li>
+<li>那么sql语句经过拼接之后<br>select * from user where username = ‘sjad’ and password = ‘a’ or ‘a’=’a’;</li>
+</ul>
+</li>
+<li><p>解决sql注入问题，使用PreparedStatement对象</p>
+<ul>
+<li>预编译的sql使用 ? 作为占位符</li>
+<li>获取PerparedStatement对象时，sql作为参数</li>
+<li>获取对象之后使用setXXX(),来给 ? 赋值</li>
+<li>执行sql语句不需要传递参数</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> JDBC<span class="token punctuation">;</span>
 
@@ -1019,32 +1037,29 @@ password=9624988464...
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/03/01/jdbc-ji-chu-ji-dui-xiang-xiang-jie/">
+                <a href="/2020/03/05/shu-ju-ku-lian-jie-chi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="JDBC基础及对象详解">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="数据库连接池">
                         
-                        <span class="card-title">JDBC基础及对象详解</span>
+                        <span class="card-title">数据库连接池</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            JDBCJDBC：Java DataBase Connectivity Java数据库连接
-
-JDBC：SUN公司定义的一套操作所有关系型数据库的规则（接口），各个数据库厂商提供JDBC的实现类（数据库驱动），我们可以使用这套接口来编程，真
+                            原理连接池基本的思想是在系统初始化的时候，将数据库连接作为对象存储在内存中，当用户需要访问数据库时，并非建立一个新的连接，而是从连接池中取出一个已建立的空闲连接对象。使用完毕后，用户也并非将连接关闭，而是将连接放回连接池中，以供下一个请求访
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-01
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-05
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -1053,7 +1068,6 @@ JDBC：SUN公司定义的一套操作所有关系型数据库的规则（接口�
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -1061,8 +1075,8 @@ JDBC：SUN公司定义的一套操作所有关系型数据库的规则（接口�
                         <span class="chip bg-color">java</span>
                     </a>
                     
-                    <a href="/tags/JDBC/">
-                        <span class="chip bg-color">JDBC</span>
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="chip bg-color">数据库</span>
                     </a>
                     
                 </div>
