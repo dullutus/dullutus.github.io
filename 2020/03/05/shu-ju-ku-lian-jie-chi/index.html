@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="数据库连接池, Mao Qiu">
-    <meta name="description" content="原理连接池基本的思想是在系统初始化的时候，将数据库连接作为对象存储在内存中，当用户需要访问数据库时，并非建立一个新的连接，而是从连接池中取出一个已建立的空闲连接对象。使用完毕后，用户也并非将连接关闭，而是将连接放回连接池中，以供下一个请求访">
+    <meta name="description" content="原理  连接池基本的思想是在系统初始化的时候，将数据库连接作为对象存储在内存中，当用户需要访问数据库时，并非建立一个新的连接，而是从连接池中取出一个已建立的空闲连接对象。使用完毕后，用户也并非将连接关闭，而是将连接放回连接池中，以供下一个请">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -462,10 +462,18 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><pre><code>连接池基本的思想是在系统初始化的时候，将数据库连接作为对象存储在内存中，当用户需要访问数据库时，并非建立一个新的连接，而是从连接池中取出一个已建立的空闲连接对象。使用完毕后，用户也并非将连接关闭，而是将连接放回连接池中，以供下一个请求访问使用。而连接的建立、断开都由连接池自身来管理。同时，还可以通过设置连接池的参数来控制连接池中的初始连接数、连接的上下限数以及每个连接的最大使用次数、最大空闲时间等等。也可以通过其自身的管理机制来监视数据库连接的数量、使用情况等。</code></pre><h2 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h2><ul>
+                <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>  连接池基本的思想是在系统初始化的时候，将数据库连接作为对象存储在内存中，当用户需要访问数据库时，并非建立一个新的连接，而是从连接池中取出一个已建立的空闲连接对象。使用完毕后，用户也并非将连接关闭，而是将连接放回连接池中，以供下一个请求访问使用。而连接的建立、断开都由连接池自身来管理。同时，还可以通过设置连接池的参数来控制连接池中的初始连接数、连接的上下限数以及每个连接的最大使用次数、最大空闲时间等等。也可以通过其自身的管理机制来监视数据库连接的数量、使用情况等。</p>
+<h2 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h2><ul>
 <li><p>节约资源：系统初始化好之后，连接池则被创建，当用户来访问数据库时，可以直接从连接池里取得连接对象，这样就避免了频繁的创建数据库连接、释放数据库连接，从而避免了资源的浪费</p>
 </li>
 <li><p>提高用户的访问效率：从连接池里取得连接对象，要比重新申请连接快得多；释放资源并不是关闭连接，而是将连接对象归还给连接池，以便下次使用</p>
+</li>
+<li><p>基本配置文件的参数</p>
+<ul>
+<li>初始化连接数：初始化程序是连接池里连接的个数</li>
+<li>最大连接数：连接池里能保存的最大连接数</li>
+<li>最大等待时间：申请连接时超过最大等待时间则申请失败</li>
+</ul>
 </li>
 </ul>
 <h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><ul>
@@ -515,7 +523,9 @@
 </li>
 </ul>
 <h2 id="Spring-JDBC"><a href="#Spring-JDBC" class="headerlink" title="Spring JDBC"></a>Spring JDBC</h2><ul>
-<li><p>Spring框架对JDBC的简单封装，提供了一个JDBCTemplate对象简化JDBC开发</p>
+<li><p>Spring框架对JDBC的简单封装，提供了一个JDBCTemplate对象简化JDBC开发  </p>
+</li>
+<li><p>无需进行申请连接和释放连接</p>
 </li>
 <li><p>步骤：</p>
 <ul>
@@ -814,7 +824,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            原理连接池基本的思想是在系统初始化的时候，将数据库连接作为对象存储在内存中，当用户需要访问数据库时，并非建立一个新的连接，而是从连接池中取出一个已建立的空闲连接对象。使用完毕后，用户也并非将连接关闭，而是将连接放回连接池中，以供下一个请求访
+                            原理  连接池基本的思想是在系统初始化的时候，将数据库连接作为对象存储在内存中，当用户需要访问数据库时，并非建立一个新的连接，而是从连接池中取出一个已建立的空闲连接对象。使用完毕后，用户也并非将连接关闭，而是将连接放回连接池中，以供下一个请
                         
                     </div>
                     <div class="publish-info">
