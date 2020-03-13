@@ -4,8 +4,14 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="数据库连接池, Mao Qiu">
-    <meta name="description" content="原理  连接池基本的思想是在系统初始化的时候，将数据库连接作为对象存储在内存中，当用户需要访问数据库时，并非建立一个新的连接，而是从连接池中取出一个已建立的空闲连接对象。使用完毕后，用户也并非将连接关闭，而是将连接放回连接池中，以供下一个请">
+    <meta name="keywords" content="xml解析, Mao Qiu">
+    <meta name="description" content="XML 指可扩展标记语言，可以自定义标签,被设计用来传输和存储数据
+
+解析（读取）：操作xml文档，将文档中的数据读取到内存中
+写入：将内存中的数据保存到xml文档中。持久化的存储
+
+解析xml的方式
+DOM：将标记语言文档一次性加载进内存">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +19,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>数据库连接池 | Mao Qiu</title>
+    <title>xml解析 | Mao Qiu</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -308,7 +314,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">数据库连接池</h1>
+                    <h1 class="description center-align post-title">xml解析</h1>
                 </div>
             </div>
         </div>
@@ -425,12 +431,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/java/">
-                                <span class="chip bg-color">java</span>
+                            <a href="/tags/%E7%AC%94%E8%AE%B0/">
+                                <span class="chip bg-color">笔记</span>
                             </a>
                         
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                                <span class="chip bg-color">数据库</span>
+                            <a href="/tags/java/">
+                                <span class="chip bg-color">java</span>
                             </a>
                         
                     </div>
@@ -445,7 +451,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-05
+                    2020-03-12
                 </div>
                 
 
@@ -462,114 +468,74 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>  连接池基本的思想是在系统初始化的时候，将数据库连接作为对象存储在内存中，当用户需要访问数据库时，并非建立一个新的连接，而是从连接池中取出一个已建立的空闲连接对象。使用完毕后，用户也并非将连接关闭，而是将连接放回连接池中，以供下一个请求访问使用。而连接的建立、断开都由连接池自身来管理。同时，还可以通过设置连接池的参数来控制连接池中的初始连接数、连接的上下限数以及每个连接的最大使用次数、最大空闲时间等等。也可以通过其自身的管理机制来监视数据库连接的数量、使用情况等。</p>
-<h2 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h2><ul>
-<li><p>节约资源：系统初始化好之后，连接池则被创建，当用户来访问数据库时，可以直接从连接池里取得连接对象，这样就避免了频繁的创建数据库连接、释放数据库连接，从而避免了资源的浪费</p>
-</li>
-<li><p>提高用户的访问效率：从连接池里取得连接对象，要比重新申请连接快得多；释放资源并不是关闭连接，而是将连接对象归还给连接池，以便下次使用</p>
-</li>
-<li><p>基本配置文件的参数</p>
+                <p>XML 指可扩展标记语言，可以自定义标签,被设计用来传输和存储数据</p>
 <ul>
-<li>初始化连接数：初始化程序是连接池里连接的个数</li>
-<li>最大连接数：连接池里能保存的最大连接数</li>
-<li>最大等待时间：申请连接时超过最大等待时间则申请失败</li>
+<li>解析（读取）：操作xml文档，将文档中的数据读取到内存中</li>
+<li>写入：将内存中的数据保存到xml文档中。持久化的存储</li>
 </ul>
-</li>
-</ul>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><ul>
-<li><p>标准接口：DataSource（javax.sql包下），具体的实现类是由数据库厂商实现</p>
+<h2 id="解析xml的方式"><a href="#解析xml的方式" class="headerlink" title="解析xml的方式"></a>解析xml的方式</h2><ul>
+<li><p>DOM：将标记语言文档一次性加载进内存，在内存中形成一颗dom树</p>
 <ul>
-<li>方法：<ul>
-<li>获取连接：getConnection()</li>
-<li>归还连接：Connection.close() 如果连接对象是从连接池中获得，那么此方法不再关闭连接，而是归还链接</li>
+<li>优点：操作方便，可以对文档进行CRUD的所有操作</li>
+<li>缺点：占内存大</li>
 </ul>
 </li>
-</ul>
-</li>
-<li><p>使用 C3P0 数据库连接池</p>
+<li><p>SAX：逐行读取，基于事件驱动的</p>
 <ul>
-<li><p>导入jar包 (两个) c3p0-0.9.5.2.jar 和 mchange-commons-java-0.2.12.jar</p>
-</li>
-<li><p>定义配置文件：</p>
-<ul>
-<li><p>名称： c3p0.properties 或者 c3p0-config.xml</p>
-</li>
-<li><p>路径：直接将文件放在src目录下即可。</p>
-</li>
-<li><p>创建核心对象——数据库连接池对象 ComboPooledDataSource</p>
-</li>
-<li><p>获取连接： getConnection</p>
-<ul>
-<li>创建线程池对象:DataSource ds  = new ComboPooledDataSource();</li>
-<li>获取连接对象Connection conn = ds.getConnection();</li>
+<li>优点：不占内存</li>
+<li>缺点：只能读取，不能删改</li>
 </ul>
 </li>
 </ul>
-</li>
+<h2 id="xml常见的解析器"><a href="#xml常见的解析器" class="headerlink" title="xml常见的解析器"></a>xml常见的解析器</h2><ul>
+<li>JAXP：SUN公司提供的解析器，支持dom和sax两种思想</li>
+<li>DOM4J</li>
+<li>Jsoup：是一款html解析器，可以直接解析某个url地址，提供了一套非常省力的API，可以通过dom，JQuery的操作方式来取出数据</li>
+<li>PULL：Android操作系统内置的解析器，sax方式</li>
 </ul>
-</li>
-<li><p>Druid：数据库连接池，由阿里巴巴提供</p>
-<ul>
+<h2 id="Jsoup使用"><a href="#Jsoup使用" class="headerlink" title="Jsoup使用"></a>Jsoup使用</h2><ul>
 <li>导入jar包</li>
-<li>定义配置文件<ul>
-<li>是Properties形式的</li>
-<li>可以放在任意目录叫任意名称</li>
+<li>获取Document对象</li>
+<li>获取对应的Element对象</li>
+<li>获取数据</li>
 </ul>
+<h2 id="对象详解"><a href="#对象详解" class="headerlink" title="对象详解"></a>对象详解</h2><ul>
+<li><p>Jsoup：工具类，Jsoup.parse()可以解析html文档返回Document对象</p>
 </li>
-<li>加载配置文件</li>
-<li>获取连接池对象：通过工厂来获取 DruidDataSourceFactory.createDataSource(),需要传入Properties对象</li>
-<li>获取连接对象</li>
-</ul>
+<li><p>Document：文档对象。代表内存中的dom树</p>
 </li>
-</ul>
-<h2 id="Spring-JDBC"><a href="#Spring-JDBC" class="headerlink" title="Spring JDBC"></a>Spring JDBC</h2><ul>
-<li><p>Spring框架对JDBC的简单封装，提供了一个JDBCTemplate对象简化JDBC开发  </p>
+<li><p>Elements：元素Element对象的集合，继承于ArrayList&lt;Element&gt;</p>
 </li>
-<li><p>无需进行申请连接和释放连接</p>
-</li>
-<li><p>步骤：</p>
+<li><p>Element:元素对象</p>
 <ul>
-<li><p>导入jar包</p>
+<li>获取子元素</li>
+<li>获取属性值<ul>
+<li>String attr(String key)：根据属性名称获取属性值</li>
+</ul>
 </li>
-<li><p>创建JdbcTemplate对象。依赖于数据源DataSource</p>
+<li>获取文本内容<ul>
+<li>String text()：获取所有纯文本内容</li>
+<li>String html()：获取标签体所有内容（包括子标签的字符串内容）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Node：节点对象</p>
 <ul>
-<li>JdbcTemplate template = new JdbcTemplate(DataSource ds);</li>
+<li>是Document和Element的父类</li>
 </ul>
 </li>
-<li><p>调用JdbcTemplate的方法来完成CRUD操作</p>
+</ul>
+<h2 id="Jsoup快捷查询方式"><a href="#Jsoup快捷查询方式" class="headerlink" title="Jsoup快捷查询方式"></a>Jsoup快捷查询方式</h2><ul>
+<li><p>selector：选择器</p>
 <ul>
-<li><p>updata()：执行DML语句。（增删改查）</p>
+<li>使用方法：public Element select(String cssQuery) 语法参考Selector类中定义的语法（查看文档）</li>
+</ul>
 </li>
-<li><p>queryForMap()：查询结果将结果集封装为map集合，将列名作为key，记录作为value</p>
+<li><p>XPath：XPath即为xml路径语言，它是一种用来确定xml（标准通用标记语言的子集）文档中某部分位置的语言</p>
 <ul>
-<li>注意：这个方法查询的结果集长度只能是1</li>
-</ul>
-</li>
-<li><p>queryForList()：查询结果将结果集封装为list集合</p>
-<ul>
-<li>注意：将每一条记录都封装成Map集合，再将Map集合装载到List集合中</li>
-</ul>
-</li>
-<li><p>query()：查询结果将结果集封装为JavaBean对象</p>
-<ul>
-<li>query的参数：（sql，RowMapper）<ul>
-<li>一般使用BeanPropertyRowMapper实现类，可以完成数据到JavaBean的自动封装</li>
-<li>new BeanPropertyRowMapper&lt;类型&gt;(类型.class)<ul>
-<li>注意：new BeanPropertyRowMapper&lt;类型&gt;(类型.class)采用空参的构造函数</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>queryForObject()：查询结果将结果集封装为对象</p>
-<ul>
-<li>一般用于聚合函数的查询</li>
-<li>参数：（sql，类型.class）期望返回的数据类型</li>
-</ul>
-</li>
-</ul>
-</li>
+<li>使用XPath需要导入额外的jar包</li>
+<li>查询W3Cschool的参考手册，使用xpath的语法完成查询</li>
 </ul>
 </li>
 </ul>
@@ -598,7 +564,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://dullutus.github.io/2020/03/05/shu-ju-ku-lian-jie-chi/">http://dullutus.github.io/2020/03/05/shu-ju-ku-lian-jie-chi/</a>
+                    <a href="http://dullutus.github.io/2020/03/12/xml-jie-xi/">http://dullutus.github.io/2020/03/12/xml-jie-xi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -636,12 +602,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/java/">
-                                    <span class="chip bg-color">java</span>
+                                <a href="/tags/%E7%AC%94%E8%AE%B0/">
+                                    <span class="chip bg-color">笔记</span>
                                 </a>
                             
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                                    <span class="chip bg-color">数据库</span>
+                                <a href="/tags/java/">
+                                    <span class="chip bg-color">java</span>
                                 </a>
                             
                         </div>
@@ -807,9 +773,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/03/12/xml-jie-xi/">
                     <div class="card-image">
@@ -833,9 +800,9 @@ DOM：将标记语言文档一次性加载进内存
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-12
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-12
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -844,6 +811,7 @@ DOM：将标记语言文档一次性加载进内存
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -866,26 +834,24 @@ DOM：将标记语言文档一次性加载进内存
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/01/jdbc-ji-chu-ji-dui-xiang-xiang-jie/">
+                <a href="/2020/03/05/shu-ju-ku-lian-jie-chi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="JDBC基础及对象详解">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="数据库连接池">
                         
-                        <span class="card-title">JDBC基础及对象详解</span>
+                        <span class="card-title">数据库连接池</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            JDBCJDBC：Java DataBase Connectivity Java数据库连接
-
-JDBC：SUN公司定义的一套操作所有关系型数据库的规则（接口），各个数据库厂商提供JDBC的实现类（数据库驱动），我们可以使用这套接口来编程，真
+                            原理  连接池基本的思想是在系统初始化的时候，将数据库连接作为对象存储在内存中，当用户需要访问数据库时，并非建立一个新的连接，而是从连接池中取出一个已建立的空闲连接对象。使用完毕后，用户也并非将连接关闭，而是将连接放回连接池中，以供下一个请
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-05
                             </span>
                         <span class="publish-author">
                             
@@ -902,8 +868,8 @@ JDBC：SUN公司定义的一套操作所有关系型数据库的规则（接口�
                         <span class="chip bg-color">java</span>
                     </a>
                     
-                    <a href="/tags/JDBC/">
-                        <span class="chip bg-color">JDBC</span>
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="chip bg-color">数据库</span>
                     </a>
                     
                 </div>
