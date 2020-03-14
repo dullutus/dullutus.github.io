@@ -4,14 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="xml解析, Mao Qiu">
-    <meta name="description" content="XML 指可扩展标记语言，可以自定义标签,被设计用来传输和存储数据
+    <meta name="keywords" content="Servlet, Mao Qiu">
+    <meta name="description" content="
+Servlet就是一个接口，定义了Java类能被浏览器访问到(tomact识别)的规则
 
-解析（读取）：操作xml文档，将文档中的数据读取到内存中
-写入：将内存中的数据保存到xml文档中。持久化的存储
-
-解析xml的方式
-DOM：将标记语言文档一次性加载进内存">
+使用servlet
+定义类，来实现servlet接口
+  public class ServletDemo01 implements Servlet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +18,7 @@ DOM：将标记语言文档一次性加载进内存">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>xml解析 | Mao Qiu</title>
+    <title>Servlet | Mao Qiu</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -309,12 +308,12 @@ DOM：将标记语言文档一次性加载进内存">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">xml解析</h1>
+                    <h1 class="description center-align post-title">Servlet</h1>
                 </div>
             </div>
         </div>
@@ -429,17 +428,9 @@ DOM：将标记语言文档一次性加载进内存">
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/%E7%AC%94%E8%AE%B0/">
-                                <span class="chip bg-color">笔记</span>
-                            </a>
-                        
-                            <a href="/tags/java/">
-                                <span class="chip bg-color">java</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -451,7 +442,7 @@ DOM：将标记语言文档一次性加载进内存">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-12
+                    2020-03-13
                 </div>
                 
 
@@ -468,75 +459,106 @@ DOM：将标记语言文档一次性加载进内存">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>XML 指可扩展标记语言，可以自定义标签,被设计用来传输和存储数据</p>
+                <ul>
+<li>Servlet就是一个接口，定义了Java类能被浏览器访问到(tomact识别)的规则</li>
+</ul>
+<h2 id="使用servlet"><a href="#使用servlet" class="headerlink" title="使用servlet"></a>使用servlet</h2><ul>
+<li><p>定义类，来实现servlet接口</p>
+<p>  <code>public class ServletDemo01 implements Servlet</code></p>
+</li>
+<li><p>实现接口中的方法</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ServletDemo01</span> <span class="token keyword">implements</span> <span class="token class-name">Servlet</span> <span class="token punctuation">{</span>
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span>ServletConfig servletConfig<span class="token punctuation">)</span> <span class="token keyword">throws</span> ServletException <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> ServletConfig <span class="token function">getServletConfig</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">service</span><span class="token punctuation">(</span>ServletRequest servletRequest<span class="token punctuation">,</span> ServletResponse servletResponse<span class="token punctuation">)</span> <span class="token keyword">throws</span> ServletException<span class="token punctuation">,</span> IOException <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> String <span class="token function">getServletInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+</li>
+<li><p>配置Servlet</p>
+<pre class=" language-xml"><code class="language-xml">  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-name</span><span class="token punctuation">></span></span>demo1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-name</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-class</span><span class="token punctuation">></span></span>top.monsterhub.ServletDemo01<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-class</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet</span><span class="token punctuation">></span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-mapping</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-name</span><span class="token punctuation">></span></span>demo1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-name</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">></span></span>/demo1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-mapping</span><span class="token punctuation">></span></span></code></pre>
+</li>
+</ul>
+<h2 id="执行原理"><a href="#执行原理" class="headerlink" title="执行原理"></a>执行原理</h2><ul>
+<li><p>当服务器接收到客户端的请求后，会解析请求url路径，获取访问Servlet的资源路径</p>
+</li>
+<li><p>查找web.xml文件，是否有对应的&lt;url-pattern&gt;标签体内容</p>
+</li>
+<li><p>tomcat通过标签体的内容找到全类名，利用反射机制将字节码文件加载进内存，并创建其对象</p>
+</li>
+<li><p>调用其方法</p>
+</li>
+<li><p><strong>Servlet3.0可以用在类上添加@WebServlet(“资源路径”)注解，来代替配置web.xml文件</strong></p>
+</li>
+</ul>
+<h2 id="Servlet中的方法"><a href="#Servlet中的方法" class="headerlink" title="Servlet中的方法"></a>Servlet中的方法</h2><ul>
+<li>init 初始化方法，servlet被创建时执行一次</li>
+<li>ServletConfig 获取Servlet配置对象</li>
+<li>service 服务方法，提供服务</li>
+<li>getServletInfo 获取Servlet的一些信息</li>
+<li>destroy 服务器正常关闭时调用</li>
+</ul>
+<h2 id="Servlet生命周期"><a href="#Servlet生命周期" class="headerlink" title="Servlet生命周期"></a>Servlet生命周期</h2><ul>
+<li><p>被创建（执行init方法）</p>
 <ul>
-<li>解析（读取）：操作xml文档，将文档中的数据读取到内存中</li>
-<li>写入：将内存中的数据保存到xml文档中。持久化的存储</li>
-</ul>
-<h2 id="解析xml的方式"><a href="#解析xml的方式" class="headerlink" title="解析xml的方式"></a>解析xml的方式</h2><ul>
-<li><p>DOM：将标记语言文档一次性加载进内存，在内存中形成一颗dom树</p>
+<li><p>默认情况下配置文件标签&lt;load-on-starup&gt;值为负数，servlet第一次被访问时，创建servlet</p>
+</li>
+<li><p>若配置文件标签&lt;load-on-starup&gt;值为正数，则服务器启动时创建servlet</p>
 <ul>
-<li>优点：操作方便，可以对文档进行CRUD的所有操作</li>
-<li>缺点：占内存大</li>
+<li><strong>Servlet的init方法只执行一次，说明一个Servlet在内存中只存在一个对象，Servlet是单例的</strong><ul>
+<li>多个用户同时访问时就可能发生安全问题，<strong>所以尽量不要在Servlet中定义成员变量，即使定义了成员变量也不要对其修改值</strong></li>
 </ul>
 </li>
-<li><p>SAX：逐行读取，基于事件驱动的</p>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>提供服务（执行service方法）</p>
 <ul>
-<li>优点：不占内存</li>
-<li>缺点：只能读取，不能删改</li>
+<li>每次访问Servlet时，Servlet方法都会被调用一次</li>
 </ul>
 </li>
-</ul>
-<h2 id="xml常见的解析器"><a href="#xml常见的解析器" class="headerlink" title="xml常见的解析器"></a>xml常见的解析器</h2><ul>
-<li>JAXP：SUN公司提供的解析器，支持dom和sax两种思想</li>
-<li>DOM4J</li>
-<li>Jsoup：是一款html解析器，可以直接解析某个url地址，提供了一套非常省力的API，可以通过dom，JQuery的操作方式来取出数据</li>
-<li>PULL：Android操作系统内置的解析器，sax方式</li>
-</ul>
-<h2 id="Jsoup使用"><a href="#Jsoup使用" class="headerlink" title="Jsoup使用"></a>Jsoup使用</h2><ul>
-<li>导入jar包</li>
-<li>获取Document对象</li>
-<li>获取对应的Element对象</li>
-<li>获取数据</li>
-</ul>
-<h2 id="对象详解"><a href="#对象详解" class="headerlink" title="对象详解"></a>对象详解</h2><ul>
-<li><p>Jsoup：工具类，Jsoup.parse()可以解析html文档返回Document对象</p>
-</li>
-<li><p>Document：文档对象。代表内存中的dom树</p>
-</li>
-<li><p>Elements：元素Element对象的集合，继承于ArrayList&lt;Element&gt;</p>
-</li>
-<li><p>Element:元素对象</p>
+<li><p>被销毁（执行destory方法）</p>
 <ul>
-<li>获取子元素</li>
-<li>获取属性值<ul>
-<li>String attr(String key)：根据属性名称获取属性值</li>
-</ul>
-</li>
-<li>获取文本内容<ul>
-<li>String text()：获取所有纯文本内容</li>
-<li>String html()：获取标签体所有内容（包括子标签的字符串内容）</li>
+<li>Servlet被销毁时执行，服务器关闭时，Servlet被销毁</li>
+<li>只有服务器正常关闭时，才会执行destroy方法</li>
+<li>destroy方法在Servlet被销毁之前执行，一般用于释放资源</li>
 </ul>
 </li>
 </ul>
+<h2 id="Servlet的体系结构"><a href="#Servlet的体系结构" class="headerlink" title="Servlet的体系结构"></a>Servlet的体系结构</h2><ul>
+<li><p>GenericServlet：是继承Servlet接口的抽象类，将Servlet接口中其他的方法都做了默认的空实现，只将service方法作为抽象方法，所以定义类时继承该类则只需实现service方法即可</p>
 </li>
-<li><p>Node：节点对象</p>
-<ul>
-<li>是Document和Element的父类</li>
-</ul>
-</li>
-</ul>
-<h2 id="Jsoup快捷查询方式"><a href="#Jsoup快捷查询方式" class="headerlink" title="Jsoup快捷查询方式"></a>Jsoup快捷查询方式</h2><ul>
-<li><p>selector：选择器</p>
-<ul>
-<li>使用方法：public Element select(String cssQuery) 语法参考Selector类中定义的语法（查看文档）</li>
-</ul>
-</li>
-<li><p>XPath：XPath即为xml路径语言，它是一种用来确定xml（标准通用标记语言的子集）文档中某部分位置的语言</p>
-<ul>
-<li>使用XPath需要导入额外的jar包</li>
-<li>查询W3Cschool的参考手册，使用xpath的语法完成查询</li>
-</ul>
+<li><p>HttpServlet：继承于GenericServlet的抽象类，对http协议进行简单的封装，简化操作，继承该抽象类需要复写doGet/doPost方法</p>
 </li>
 </ul>
 
@@ -564,7 +586,7 @@ DOM：将标记语言文档一次性加载进内存">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://dullutus.github.io/2020/03/12/xml-jie-xi/">http://dullutus.github.io/2020/03/12/xml-jie-xi/</a>
+                    <a href="http://dullutus.github.io/2020/03/13/servlet/">http://dullutus.github.io/2020/03/13/servlet/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -601,15 +623,7 @@ DOM：将标记语言文档一次性加载进内存">
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/%E7%AC%94%E8%AE%B0/">
-                                    <span class="chip bg-color">笔记</span>
-                                </a>
-                            
-                                <a href="/tags/java/">
-                                    <span class="chip bg-color">java</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -773,9 +787,10 @@ DOM：将标记语言文档一次性加载进内存">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/03/13/servlet/">
                     <div class="card-image">
@@ -798,9 +813,9 @@ Servlet就是一个接口，定义了Java类能被浏览器访问到(tomact识�
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -809,6 +824,7 @@ Servlet就是一个接口，定义了Java类能被浏览器访问到(tomact识�
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -819,24 +835,30 @@ Servlet就是一个接口，定义了Java类能被浏览器访问到(tomact识�
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/05/shu-ju-ku-lian-jie-chi/">
+                <a href="/2020/03/12/xml-jie-xi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="数据库连接池">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="xml解析">
                         
-                        <span class="card-title">数据库连接池</span>
+                        <span class="card-title">xml解析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            原理  连接池基本的思想是在系统初始化的时候，将数据库连接作为对象存储在内存中，当用户需要访问数据库时，并非建立一个新的连接，而是从连接池中取出一个已建立的空闲连接对象。使用完毕后，用户也并非将连接关闭，而是将连接放回连接池中，以供下一个请
+                            XML 指可扩展标记语言，可以自定义标签,被设计用来传输和存储数据
+
+解析（读取）：操作xml文档，将文档中的数据读取到内存中
+写入：将内存中的数据保存到xml文档中。持久化的存储
+
+解析xml的方式
+DOM：将标记语言文档一次性加载进内存
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-12
                             </span>
                         <span class="publish-author">
                             
@@ -849,12 +871,12 @@ Servlet就是一个接口，定义了Java类能被浏览器访问到(tomact识�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/java/">
-                        <span class="chip bg-color">java</span>
+                    <a href="/tags/%E7%AC%94%E8%AE%B0/">
+                        <span class="chip bg-color">笔记</span>
                     </a>
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                        <span class="chip bg-color">数据库</span>
+                    <a href="/tags/java/">
+                        <span class="chip bg-color">java</span>
                     </a>
                     
                 </div>
