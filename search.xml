@@ -5,8 +5,8 @@
     
     <entry>
       <title>两个对象值相同却有可能有不同的hashCode</title>
-      <link href="/2020/09/08/liang-ge-dui-xiang-zhi-xiang-tong-que-you-ke-neng-you-bu-tong-de-hashcode/"/>
-      <url>/2020/09/08/liang-ge-dui-xiang-zhi-xiang-tong-que-you-ke-neng-you-bu-tong-de-hashcode/</url>
+      <link href="/2020/04/09/liang-ge-dui-xiang-zhi-xiang-tong-que-you-ke-neng-you-bu-tong-de-hashcode/"/>
+      <url>/2020/04/09/liang-ge-dui-xiang-zhi-xiang-tong-que-you-ke-neng-you-bu-tong-de-hashcode/</url>
       
         <content type="html"><![CDATA[<p>hashCode是所有java对象的固有方法，如果不重载的话，返回的实际上是该对象在jvm的堆上的内存地址，而不同对象的内存地址肯定不同，所以这个hashCode也就肯定不同了。如果重载了的话，由于采用的算法的问题，有可能导致两个不同对象的hashCode相同。  </p><p>Java 对于 eqauls 方法和 hashCode 方法是这样规定的：(1)如果两个对象相同（equals 方法返回 true），那么它们的 hashCode 值一定要相同；(2)如果两个对象的 hashCode 相同，它们并不一定相同。当然，你未必要按照要求去做，但是如果你违背了上述原则就会发现在使用容器时，相同的对象可以出现在 Set 集合中，同时增加新元素的效率会大大下降（对于使用哈希存储的系统，如果哈希码频繁的冲突将会造成存取性能急剧下降）。  </p><p>在集合中，set集合是不允许元素重复的，当新添加一个元素的时候首先调用这个元素的hashCode方法，得到的哈希码作为这个元素的存储地址，如果这个地址上没有元素，则直接存储在这个地址上；如果这个地址上有元素，在调用equals方法比较，相同则不再存储，不相同的话就会产生冲突，会产生一个链接表，将这两个元素串起来放在同一个哈希码指定的位置上，而实际上会尽量避免哈希冲突。如果直接调用equals方法，当数据量过大时，每次都会调用一次equals方法，效率低。用hashCode方法比较减少对象比较次数，提高查找效率。  </p><p> 哈希表是结合了直接寻址和链式寻址两种方式，所需要的就是将需要加入哈希表的数据首先计算哈希值，其实就是预先分个组，然后再将数据挂到分组后的链表后面，随着添加的数据越来越多，分组链上会挂接更多的数据，同一个分组链上的数据必定具有相同的哈希值，java中的hash函数返回的是int类型的，也就是说，最多允许存在2^32个分组，也是有限的，所以出现相同的哈希码就不稀奇了。</p><hr><p>《Java 编程思想》以及《重构：改善既有代码质量》中是这样介绍 equals 方法的：<br>首先 equals 方法必须满足自反性（x.equals(x)必须返回 true）、对称性（x.equals(y)返回 true 时，y.equals(x)也必须返回 true）、传递性（x.equals(y)和 y.equals(z)都返回 true 时，x.equals(z)也必须返回 true）和一致性（当x 和 y 引用的对象信息没有被修改时，多次调用 x.equals(y)应该得到同样的返回值），而且对于任何非 null 值的引用 x，x.equals(null)必须返回 false。实现高质量的 equals 方法的诀窍包括：1. 使用==操作符检查”参数是否为这个对象的引用”；2. 使用 instanceof 操作符检查”参数是否为正确的类型”；3. 对于类中的关键属性，检查参数传入对象的属性是否与之相匹配；4. 编写完 equals 方法后，问自己它是否满足对称性、传递性、一致性；5. 重写 equals 时总是要重写 hashCode；6. 不要将 equals 方法参数中的 Object 对象替换为其他的类型，在重写时不要忘掉@Override 注解。</p>]]></content>
       
