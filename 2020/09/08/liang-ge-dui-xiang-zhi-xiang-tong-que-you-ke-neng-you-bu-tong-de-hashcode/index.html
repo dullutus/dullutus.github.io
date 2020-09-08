@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="clone对象, Mao Qiu">
-    <meta name="description" content="在实际编程过程中，我们常常要遇到这种情况：有一个对象 A，在某一时刻 A 中已经包含了一些有效值，此时可能会需要一个和 A 完全相同新对象 B，并且此后对 B 任何改动都不会影响到 A 中的值，也就是说，A 与 B 是两个独立的对象，但 B">
+    <meta name="keywords" content="两个对象值相同却有可能有不同的hashCode, Mao Qiu">
+    <meta name="description" content="hashCode是所有java对象的固有方法，如果不重载的话，返回的实际上是该对象在jvm的堆上的内存地址，而不同对象的内存地址肯定不同，所以这个hashCode也就肯定不同了。如果重载了的话，由于采用的算法的问题，有可能导致两个不同对象的">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>clone对象 | Mao Qiu</title>
+    <title>两个对象值相同却有可能有不同的hashCode | Mao Qiu</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -303,12 +303,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">clone对象</h1>
+                    <h1 class="description center-align post-title">两个对象值相同却有可能有不同的hashCode</h1>
                 </div>
             </div>
         </div>
@@ -425,8 +425,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Java/">
-                                <span class="chip bg-color">-Java</span>
+                            <a href="/tags/Java-JVM/">
+                                <span class="chip bg-color">-Java -JVM</span>
                             </a>
                         
                     </div>
@@ -441,7 +441,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-04-05
+                    2020-09-08
                 </div>
                 
 
@@ -458,46 +458,12 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>在实际编程过程中，我们常常要遇到这种情况：有一个对象 A，在某一时刻 A 中已经包含了一些有效值，此时可能会需要一个和 A 完全相同新对象 B，并且此后对 B 任何改动都不会影响到 A 中的值，也就是说，A 与 B 是两个独立的对象，但 B 的初始值是由 A 对象确定的。在 Java 语言中，用简单的赋值语句是不能满足这种需求的。要满足这种需求虽然有很多途径，但实现 clone（）方法是其中最简单，也是最高效的手段。</p>
-<h2 id="new-一个对象的过程和clone-一个对象的过程区别"><a href="#new-一个对象的过程和clone-一个对象的过程区别" class="headerlink" title="new 一个对象的过程和clone 一个对象的过程区别"></a>new 一个对象的过程和clone 一个对象的过程区别</h2><p>new 操作符是根据后面的类型来分配内存空间再调用构造函数，填充对象的各个域，这一步叫做对象的初始化，构造方法返回后，一个对象创建完毕，可以把他的引用（地址）发布到外部，在外部就可以使用这个引用操纵这个对象。<br>clone 在第一步是和 new 相似的，都是分配内存，调用 clone 方法时，分配的内存和原对象（即调用 clone 方法的对象）相同，然后再使用原对象中对应的各个域，填充新对象的域，填充完成之后，clone 方法返回，一个新的相同的对象被创建，同样可以把这个新对象的引用发布到外部。</p>
-<h2 id="Clone对象的使用"><a href="#Clone对象的使用" class="headerlink" title="Clone对象的使用"></a>Clone对象的使用</h2><h3 id="复制对象和复制引用的区别"><a href="#复制对象和复制引用的区别" class="headerlink" title="复制对象和复制引用的区别"></a>复制对象和复制引用的区别</h3><pre class=" language-java"><code class="language-java">Person p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token number">23</span><span class="token punctuation">,</span> <span class="token string">"zhang"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-Person p1 <span class="token operator">=</span> p<span class="token punctuation">;</span>
-System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
-System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>p1<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>可以把这种现象叫做引用的复制。上面代码执行完成之后， 内存中的情景如下图所示：<br><img src="/2020/04/05/clone-dui-xiang/%E5%AF%B9%E8%B1%A1%E5%BC%95%E7%94%A8.png" alt="引用内存模型"></p>
-<p>而下面的代码是真真正正的克隆了一个对象。</p>
-<pre class=" language-java"><code class="language-java">Person p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token number">23</span><span class="token punctuation">,</span> <span class="token string">"zhang"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-Person p1 <span class="token operator">=</span> <span class="token punctuation">(</span>Person<span class="token punctuation">)</span> p<span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>以上代码执行完成后， 内存中的情景如下图所示：<br><img src="/2020/04/05/clone-dui-xiang/%E5%AF%B9%E8%B1%A1clone%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B.png" alt="对象clone内存模型"></p>
-<h3 id="深拷贝和浅拷贝"><a href="#深拷贝和浅拷贝" class="headerlink" title="深拷贝和浅拷贝"></a>深拷贝和浅拷贝</h3><p>由于 age 是基本数据类型， 那么对它的拷贝没有什么疑议，直接将一个 4 字节的整数值拷贝过来就行。但是 name是 String 类型的， 它只是一个引用， 指向一个真正的 String 对象，那么对它的拷贝有两种方式： 直接将原对象中的 name 的引用值拷贝给新对象的 name 字段， 或者是根据原 Person 对象中的 name 指向的字符串对象创建一个新的相同的字符串对象，将这个新字符串对象的引用赋给新拷贝的 Person 对象的 name 字段。这两种拷贝方式分别叫做浅拷贝和深拷贝。深拷贝和浅拷贝的原理如下图所示：</p>
-<p><img src="/2020/04/05/clone-dui-xiang/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D.png" alt="深拷贝和浅拷贝"></p>
-<p>如果想要深拷贝一个对象，这个对象必须要实现 Cloneable 接口，实现 clone方法，并且在 clone 方法内部，把该对象引用的其他对象也要 clone 一份，这就要求这个被引用的对象必须也要实现Cloneable 接口并且实现 clone 方法。那么，按照上面的结论，实现以下代码 Body 类组合了 Head 类，要想深拷贝Body 类，必须在 Body 类的 clone 方法中将 Head 类也要拷贝一份。代码如下：</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Body</span> <span class="token keyword">implements</span> <span class="token class-name">Cloneable</span><span class="token punctuation">{</span>
-    <span class="token keyword">public</span> Head head<span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token function">Body</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token function">Body</span><span class="token punctuation">(</span>Head head<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>head <span class="token operator">=</span> head<span class="token punctuation">;</span><span class="token punctuation">}</span>
-    <span class="token annotation punctuation">@Override</span>
-    <span class="token keyword">protected</span> Object <span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> CloneNotSupportedException <span class="token punctuation">{</span>
-        Body newBody <span class="token operator">=</span>  <span class="token punctuation">(</span>Body<span class="token punctuation">)</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        newBody<span class="token punctuation">.</span>head <span class="token operator">=</span> <span class="token punctuation">(</span>Head<span class="token punctuation">)</span> head<span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> newBody<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Head</span> <span class="token keyword">implements</span> <span class="token class-name">Cloneable</span><span class="token punctuation">{</span>
-        <span class="token keyword">public</span>  Face face<span class="token punctuation">;</span>
-        <span class="token keyword">public</span> <span class="token function">Head</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-        <span class="token annotation punctuation">@Override</span>
-        <span class="token keyword">protected</span> Object <span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> CloneNotSupportedException <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>  
-    <span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> CloneNotSupportedException <span class="token punctuation">{</span>
-        Body body <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Body</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Head</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Face</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        Body body1 <span class="token operator">=</span> <span class="token punctuation">(</span>Body<span class="token punctuation">)</span> body<span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"body == body1 : "</span> <span class="token operator">+</span> <span class="token punctuation">(</span>body <span class="token operator">==</span> body1<span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"body.head == body1.head : "</span> <span class="token operator">+</span>  <span class="token punctuation">(</span>body<span class="token punctuation">.</span>head <span class="token operator">==</span> body1<span class="token punctuation">.</span>head<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-     <span class="token punctuation">}</span></code></pre>
+                <p>hashCode是所有java对象的固有方法，如果不重载的话，返回的实际上是该对象在jvm的堆上的内存地址，而不同对象的内存地址肯定不同，所以这个hashCode也就肯定不同了。如果重载了的话，由于采用的算法的问题，有可能导致两个不同对象的hashCode相同。  </p>
+<p>Java 对于 eqauls 方法和 hashCode 方法是这样规定的：(1)如果两个对象相同（equals 方法返回 true），那么它们的 hashCode 值一定要相同；(2)如果两个对象的 hashCode 相同，它们并不一定相同。当然，你未必要按照要求去做，但是如果你违背了上述原则就会发现在使用容器时，相同的对象可以出现在 Set 集合中，同时增加新元素的效率会大大下降（对于使用哈希存储的系统，如果哈希码频繁的冲突将会造成存取性能急剧下降）。  </p>
+<p>在集合中，set集合是不允许元素重复的，当新添加一个元素的时候首先调用这个元素的hashCode方法，得到的哈希码作为这个元素的存储地址，如果这个地址上没有元素，则直接存储在这个地址上；如果这个地址上有元素，在调用equals方法比较，相同则不再存储，不相同的话就会产生冲突，会产生一个链接表，将这两个元素串起来放在同一个哈希码指定的位置上，而实际上会尽量避免哈希冲突。如果直接调用equals方法，当数据量过大时，每次都会调用一次equals方法，效率低。用hashCode方法比较减少对象比较次数，提高查找效率。  </p>
+<p> 哈希表是结合了直接寻址和链式寻址两种方式，所需要的就是将需要加入哈希表的数据首先计算哈希值，其实就是预先分个组，然后再将数据挂到分组后的链表后面，随着添加的数据越来越多，分组链上会挂接更多的数据，同一个分组链上的数据必定具有相同的哈希值，java中的hash函数返回的是int类型的，也就是说，最多允许存在2^32个分组，也是有限的，所以出现相同的哈希码就不稀奇了。</p>
+<hr>
+<p>《Java 编程思想》以及《重构：改善既有代码质量》中是这样介绍 equals 方法的：<br>首先 equals 方法必须满足自反性（x.equals(x)必须返回 true）、对称性（x.equals(y)返回 true 时，y.equals(x)也必须返回 true）、传递性（x.equals(y)和 y.equals(z)都返回 true 时，x.equals(z)也必须返回 true）和一致性（当x 和 y 引用的对象信息没有被修改时，多次调用 x.equals(y)应该得到同样的返回值），而且对于任何非 null 值的引用 x，x.equals(null)必须返回 false。实现高质量的 equals 方法的诀窍包括：1. 使用==操作符检查”参数是否为这个对象的引用”；2. 使用 instanceof 操作符检查”参数是否为正确的类型”；3. 对于类中的关键属性，检查参数传入对象的属性是否与之相匹配；4. 编写完 equals 方法后，问自己它是否满足对称性、传递性、一致性；5. 重写 equals 时总是要重写 hashCode；6. 不要将 equals 方法参数中的 Object 对象替换为其他的类型，在重写时不要忘掉@Override 注解。</p>
 
             </div>
             <hr/>
@@ -523,7 +489,7 @@ Person p1 <span class="token operator">=</span> <span class="token punctuation">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://dullutus.github.io/2020/04/05/clone-dui-xiang/">http://dullutus.github.io/2020/04/05/clone-dui-xiang/</a>
+                    <a href="http://dullutus.github.io/2020/09/08/liang-ge-dui-xiang-zhi-xiang-tong-que-you-ke-neng-you-bu-tong-de-hashcode/">http://dullutus.github.io/2020/09/08/liang-ge-dui-xiang-zhi-xiang-tong-que-you-ke-neng-you-bu-tong-de-hashcode/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -561,8 +527,8 @@ Person p1 <span class="token operator">=</span> <span class="token punctuation">
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Java/">
-                                    <span class="chip bg-color">-Java</span>
+                                <a href="/tags/Java-JVM/">
+                                    <span class="chip bg-color">-Java -JVM</span>
                                 </a>
                             
                         </div>
@@ -728,9 +694,10 @@ Person p1 <span class="token operator">=</span> <span class="token punctuation">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/09/08/liang-ge-dui-xiang-zhi-xiang-tong-que-you-ke-neng-you-bu-tong-de-hashcode/">
                     <div class="card-image">
@@ -748,9 +715,9 @@ Person p1 <span class="token operator">=</span> <span class="token punctuation">
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-09-08
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-08
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -759,6 +726,7 @@ Person p1 <span class="token operator">=</span> <span class="token punctuation">
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -777,28 +745,24 @@ Person p1 <span class="token operator">=</span> <span class="token punctuation">
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/14/request-response/">
+                <a href="/2020/04/05/clone-dui-xiang/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Request&Response">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="clone对象">
                         
-                        <span class="card-title">Request&Response</span>
+                        <span class="card-title">clone对象</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            request对象和response对象的原理    request和response对象是由服务器创建，我们来使用，request对象是来获取请求消息，response对象是来响应消息
-Resquest功能
-获取请求消息数据
-
-获取请求行
+                            在实际编程过程中，我们常常要遇到这种情况：有一个对象 A，在某一时刻 A 中已经包含了一些有效值，此时可能会需要一个和 A 完全相同新对象 B，并且此后对 B 任何改动都不会影响到 A 中的值，也就是说，A 与 B 是两个独立的对象，但 B
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-05
                             </span>
                         <span class="publish-author">
                             
@@ -807,6 +771,14 @@ Resquest功能
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">-Java</span>
+                    </a>
+                    
                 </div>
                 
             </div>
