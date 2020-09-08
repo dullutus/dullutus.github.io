@@ -4,12 +4,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="软考复习, Mao Qiu">
-    <meta name="description" content="计算机组成与体系结构计算机体系结构分类——Flynn
+    <meta name="keywords" content="Request&amp;Response, Mao Qiu">
+    <meta name="description" content="request对象和response对象的原理    request和response对象是由服务器创建，我们来使用，request对象是来获取请求消息，response对象是来响应消息
+Resquest功能
+获取请求消息数据
 
-单指令流单数据流：单处理器系统，老式PC机，多见于单片机系统。
-阵列处理机（典型单指令流多数据流代表）：适合处理数组类型的操作，例如：一条加法指令通过输入不同数据来得到一组结果。
-多指">
+获取请求行">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>软考复习 | Mao Qiu</title>
+    <title>Request&amp;Response | Mao Qiu</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -307,12 +307,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">软考复习</h1>
+                    <h1 class="description center-align post-title">Request&amp;Response</h1>
                 </div>
             </div>
         </div>
@@ -441,7 +441,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-06
+                    2020-03-14
                 </div>
                 
 
@@ -458,68 +458,151 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="计算机组成与体系结构"><a href="#计算机组成与体系结构" class="headerlink" title="计算机组成与体系结构"></a>计算机组成与体系结构</h2><h3 id="计算机体系结构分类——Flynn"><a href="#计算机体系结构分类——Flynn" class="headerlink" title="计算机体系结构分类——Flynn"></a>计算机体系结构分类——Flynn</h3><p><img src="/2020/02/06/ruan-kao-fu-xi/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E5%88%86%E7%B1%BB-Flynn.png" alt="计算机体系结构分类-Flynn.png"></p>
+                <h2 id="request对象和response对象的原理"><a href="#request对象和response对象的原理" class="headerlink" title="request对象和response对象的原理"></a>request对象和response对象的原理</h2><p>  <img src="/2020/03/14/request-response/%E5%8E%9F%E7%90%86.png" alt="原理"><br>  request和response对象是由服务器创建，我们来使用，request对象是来获取请求消息，response对象是来响应消息</p>
+<h2 id="Resquest功能"><a href="#Resquest功能" class="headerlink" title="Resquest功能"></a>Resquest功能</h2><ul>
+<li><p>获取请求消息数据</p>
 <ul>
-<li>单指令流单数据流：单处理器系统，老式PC机，多见于单片机系统。</li>
-<li>阵列处理机（典型单指令流多数据流代表）：适合处理数组类型的操作，例如：一条加法指令通过输入不同数据来得到一组结果。</li>
-<li>多指令单数据流是一种理论层次的模型。</li>
-<li>多指令流多数据流：当前很常见，例如集群式。</li>
-</ul>
-<h3 id="CISC与RISC"><a href="#CISC与RISC" class="headerlink" title="CISC与RISC"></a>CISC与RISC</h3><p><img src="/2020/02/06/ruan-kao-fu-xi/CISC%E4%B8%8ERISC.png" alt="CISC与RISC.png"></p>
+<li><p>获取请求行数据</p>
 <ul>
-<li>CISC：在计算机还没普及的情况下提出来的，计算机属于奢饰品，找厂商定制计算机，从硬件到指令系统都是定制，要进行什么样的业务处理就设计什么样的指令。根据不同的用户就会有不同的指令，而且指令的数量会相当多。</li>
+<li>获取请求方式：String getMethod()</li>
+<li>获取虚拟目录：String getContextPath()</li>
+<li>获取Servlet路径：String getServletPath()</li>
+<li>获取get方法请求参数：String getQueryString()</li>
+<li>获取请求URI/URL：String getRequestURI() / StringBuffer getRequestURL()</li>
+<li>获取协议及版本：String getProtocol()</li>
+<li>获取客户机IP地址：String getRemoteAddr()</li>
 </ul>
-<h3 id="流水线——概念"><a href="#流水线——概念" class="headerlink" title="流水线——概念"></a>流水线——概念</h3><ul>
-<li>数字1代表第一个指令，数字2代表第二个指令</li>
-</ul>
-<p><img src="/2020/02/06/ruan-kao-fu-xi/%E6%B5%81%E6%B0%B4%E7%BA%BF.png" alt="流水线.png"></p>
+</li>
+<li><p>获取请求头数据</p>
 <ul>
-<li>流水线的计算</li>
+<li>String getHeader(String name)：通过请求偷的名称来获取请求头的值</li>
+<li>Enumeration&lt;String&gt; getHeaderNames()：获取所有请求头的名称</li>
 </ul>
-<p><img src="/2020/02/06/ruan-kao-fu-xi/%E6%B5%81%E6%B0%B4%E7%BA%BF%E8%AE%A1%E7%AE%97.png" alt="流水线计算.png"></p>
+</li>
+<li><p>获取请求体数据：<br>请求体：只有POST请求方式才有请求体，在请求体中封装了POST请求的参数<br>使用：获取流对象+从流中拿数据</p>
 <ul>
-<li>流水线吞吐率的计算</li>
+<li>BufferedReader getReader()：获取字符操作流才能操作字符数据</li>
+<li>ServletInputStream getInputStream()：获取字节操作流，可以操作所有类型数据</li>
 </ul>
-<p><img src="/2020/02/06/ruan-kao-fu-xi/%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%90%9E%E5%90%90%E7%8E%87%E7%9A%84%E8%AE%A1%E7%AE%97.png" alt="流水线吞吐的率计算.png"></p>
+</li>
+</ul>
+</li>
+<li><p>其他功能</p>
 <ul>
-<li>流水线的加速比</li>
-</ul>
-<p><img src="/2020/02/06/ruan-kao-fu-xi/%E6%B5%81%E6%B0%B4%E7%BA%BF%E7%9A%84%E5%8A%A0%E9%80%9F%E6%AF%94.png" alt="流水线的加速比.png"></p>
+<li><p>获取请求参数通用方式（不论get/post）</p>
 <ul>
-<li>流水线的效率</li>
-</ul>
-<p><img src="/2020/02/06/ruan-kao-fu-xi/%E6%B5%81%E6%B0%B4%E7%BA%BF%E7%9A%84%E6%95%88%E7%8E%87.png" alt="流水线的效率.png"></p>
-<h3 id="层次化存储结构"><a href="#层次化存储结构" class="headerlink" title="层次化存储结构"></a>层次化存储结构</h3><p><img src="/2020/02/06/ruan-kao-fu-xi/%E5%B1%82%E6%AC%A1%E5%8C%96%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84.png" alt="层次化存储结构.png"></p>
+<li><p>String getParameter(String name)：根据参数名称获取参数值</p>
+</li>
+<li><p>String[] getpParameterValues(String name)：根据参数名称获取参数值的数组（适用于复选框）</p>
+</li>
+<li><p>Enumeration&lt;String&gt; getParameterNames()：获取所有请求的参数名称</p>
+</li>
+<li><p>Map&lt;String,String[]&gt; getParameterMap()：获取所有参数的map集合</p>
+</li>
+<li><p><strong>中文乱码问题</strong></p>
 <ul>
-<li>Cache不是必须的，CPU可以直接与内存进行交换，但是没有Cache的话，因为局部性原理（如循环体中的程序会暂时保存在Cache中，以便CPU快速读取）速度会极慢。</li>
-<li>按内容存取区别按地址存取</li>
+<li>get方式：tomcat8已经将get方式的乱码问题解决了</li>
+<li>post方式：由于获取参数的方式是使用流来获取，所有需要设置流的编码与html页面编码一致<br><code>request.setCharacterEncoding(&quot;utf-8&quot;);  //以utf-8编码为例</code></li>
 </ul>
-<h3 id="Cache"><a href="#Cache" class="headerlink" title="Cache"></a>Cache</h3><p><img src="/2020/02/06/ruan-kao-fu-xi/Cache.png" alt="Cache.png"></p>
-<h3 id="局部性原理"><a href="#局部性原理" class="headerlink" title="局部性原理"></a>局部性原理</h3><p><img src="/2020/02/06/ruan-kao-fu-xi/%E5%B1%80%E9%83%A8%E6%80%A7%E5%8E%9F%E7%90%86.png" alt="局部性原理.png"></p>
+</li>
+</ul>
+</li>
+<li><p>请求转发：一种在服务器内部的资源跳转方式<br>步骤：</p>
 <ul>
-<li>工作集原理：工作集是进程运行时被频繁访问的页面的集合。</li>
+<li>通过request对象获取请求转发器对象：RequestDispatcher getRequestDispatcher(String path)</li>
+<li>使用RequestDispatcher对象来进行转发：forward(ServletRequest request，ServletRespnse response)</li>
 </ul>
-<h3 id="主存"><a href="#主存" class="headerlink" title="主存"></a>主存</h3><ul>
-<li>主存分类</li>
-</ul>
-<p><img src="/2020/02/06/ruan-kao-fu-xi/%E4%B8%BB%E5%AD%98%E5%88%86%E7%B1%BB.png" alt="主存分类.png"></p>
+<p>特点：</p>
 <ul>
-<li>主存编址</li>
+<li>浏览器地址栏路径不会发生变化</li>
+<li>只能转发到当前服务器内部资源中</li>
+<li>整个访问虽然访问了多个资源，但是只有一次请求</li>
 </ul>
-<p><img src="/2020/02/06/ruan-kao-fu-xi/%E4%B8%BB%E5%AD%98%E7%BC%96%E5%9D%80.png" alt="主存编址.png"></p>
-<h3 id="磁盘结构与参数"><a href="#磁盘结构与参数" class="headerlink" title="磁盘结构与参数"></a>磁盘结构与参数</h3><p><img src="/2020/02/06/ruan-kao-fu-xi/%E7%A3%81%E7%9B%98%E7%BB%93%E6%9E%84.png" alt="磁盘结构.png"></p>
-<p><img src="/2020/02/06/ruan-kao-fu-xi/%E7%A3%81%E7%9B%98%E8%AF%95%E9%A2%98.png" alt="磁盘试题.png"></p>
-<h3 id="计算机总线"><a href="#计算机总线" class="headerlink" title="计算机总线"></a>计算机总线</h3><p><img src="/2020/02/06/ruan-kao-fu-xi/%E6%80%BB%E7%BA%BF.png" alt="总线.png"></p>
-<h3 id="系统可靠性分析——串联系统与并联系统"><a href="#系统可靠性分析——串联系统与并联系统" class="headerlink" title="系统可靠性分析——串联系统与并联系统"></a>系统可靠性分析——串联系统与并联系统</h3><p><img src="/2020/02/06/ruan-kao-fu-xi/%E4%B8%B2%E8%81%94%E7%B3%BB%E7%BB%9F.png" alt="串联系统.png"></p>
-<p><img src="/2020/02/06/ruan-kao-fu-xi/%E5%B9%B6%E8%81%94%E7%B3%BB%E7%BB%9F.png" alt="并联系统.png"></p>
-<h3 id="系统可靠性分析——n模冗余系统与混合系统"><a href="#系统可靠性分析——n模冗余系统与混合系统" class="headerlink" title="系统可靠性分析——n模冗余系统与混合系统"></a>系统可靠性分析——n模冗余系统与混合系统</h3><p><img src="/2020/02/06/ruan-kao-fu-xi/%E5%86%97%E4%BD%99%E7%B3%BB%E7%BB%9F.png" alt="冗余系统.png"></p>
-<p><img src="/2020/02/06/ruan-kao-fu-xi/%E6%B7%B7%E5%90%88%E7%B3%BB%E7%BB%9F.png" alt="混合系统.png"></p>
-<h3 id="差错控制——CRC与海明校验码"><a href="#差错控制——CRC与海明校验码" class="headerlink" title="差错控制——CRC与海明校验码"></a>差错控制——CRC与海明校验码</h3><p><img src="/2020/02/06/ruan-kao-fu-xi/%E7%BC%96%E7%A0%81.png" alt="编码.png"></p>
+</li>
+<li><p>共享数据：</p>
 <ul>
-<li>循环校验码CRC（能检错不能纠错）</li>
+<li>域对象：一个有作用范围的对象，可以在范围内共享数据</li>
+<li>request域：代表一次请求的范围，一般用于请求转发的多个资源中共享数据</li>
+<li>方法：<ul>
+<li>void setAttribute(String name,Object obj)：存储数据</li>
+<li>Object getAttribute(String name)：通过键获取值</li>
+<li>void removeAttribute(String name)：通过键移除键值对</li>
 </ul>
-<p><img src="/2020/02/06/ruan-kao-fu-xi/%E6%A8%A12%E9%99%A4%E6%B3%95.png" alt="模2除法.png"></p>
-<p><img src="/2020/02/06/ruan-kao-fu-xi/CRC%E7%BC%96%E7%A0%81.png" alt="CRC编码.png"></p>
+</li>
+</ul>
+</li>
+<li><p>获取ServletContext</p>
+<ul>
+<li>ServletContext getServletContext()</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Response对象"><a href="#Response对象" class="headerlink" title="Response对象"></a>Response对象</h2><ul>
+<li><p>功能：设置响应消息</p>
+<ul>
+<li>设置状态码：setStatus(int sc)</li>
+<li>设置响应头：setHeader(String name,String value)</li>
+<li>设置响应体：<ul>
+<li>字符输出流：PrintWriter getWriter()</li>
+<li>字节输出流：ServletOutputStream getOutputStream()</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>案例：</p>
+<ul>
+<li>完成重定向（资源跳转）</li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//方式一</span>
+<span class="token comment" spellcheck="true">//1设置状态码302</span>
+response<span class="token punctuation">.</span><span class="token function">setStatus</span><span class="token punctuation">(</span><span class="token number">302</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//2设置响应头location（资源地址）</span>
+response<span class="token punctuation">.</span><span class="token function">setHeader</span><span class="token punctuation">(</span><span class="token string">"location"</span><span class="token punctuation">,</span><span class="token string">"地址"</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">//方式二</span>
+response<span class="token punctuation">.</span><span class="token function">sendRedirect</span><span class="token punctuation">(</span><span class="token string">"地址"</span><span class="token punctuation">)</span></code></pre>
+<ul>
+<li><p>重定向（redirect）的特点：</p>
+<ul>
+<li>地址栏发生变化</li>
+<li>重定向可以访问其他站点的资源</li>
+<li>重定向是两次请求，不能使用request对象来共享数据</li>
+</ul>
+</li>
+<li><p>转发（forward）的特点：</p>
+<ul>
+<li>转发地址栏路径不变</li>
+<li>转发只能访问当前服务器下的资源</li>
+<li>转发是一次请求，可以使用request对象来共享数据</li>
+</ul>
+</li>
+<li><p>路径问题</p>
+<ul>
+<li>相对路径:通过相对路径不可以确定唯一资源<br>在访问相对路径时路径前面不添加“ / ”，以“ . ”开头。例如：<br>./  表示当前目录（也可以省略不写）<br>../  表示上一级目录</li>
+<li>绝对路径：通过绝对路径可以确定唯一资源<br>绝对路径以“ / ”开头</li>
+<li>绝对路径与相对路径的使用：<br>给客户端浏览器使用的地址用绝对路径（如表单，超链接，重定向）<br>给服务器使用的地址用相对路径（如转发路径）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="ServletContext对象"><a href="#ServletContext对象" class="headerlink" title="ServletContext对象"></a>ServletContext对象</h2><p>ServletContext对象代表整个web应用，可以和程序的容器来通信</p>
+<ul>
+<li><p>获取：request.getServletContext();<br>若继承了HttpServlet类也可用 this.getServletContext();</p>
+</li>
+<li><p>功能：</p>
+<ul>
+<li><p>获取MIME类型：<br>MIME类型是在互联网通信过程中定义的一种文件数据类型<br>MIME数据类型的格式： 大类型/小类型 ， text/html ， image/jepg<br>获取： String getMimeType(String file)</p>
+</li>
+<li><p>域对象：共享数据</p>
+</li>
+<li><p>获取文件的真实（服务器）路径</p>
+</li>
+</ul>
+</li>
+</ul>
 
             </div>
             <hr/>
@@ -545,7 +628,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://dullutus.github.io/2020/02/06/ruan-kao-fu-xi/">http://dullutus.github.io/2020/02/06/ruan-kao-fu-xi/</a>
+                    <a href="http://dullutus.github.io/2020/03/14/request-response/">http://dullutus.github.io/2020/03/14/request-response/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -750,29 +833,24 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/02/22/zi-ding-yi-zhu-jie-shi-zhan-jian-dan-de-ce-shi-kuang-jia/">
+                <a href="/2020/04/05/clone-dui-xiang/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="自定义注解实战：简单的测试框架">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="clone对象">
                         
-                        <span class="card-title">自定义注解实战：简单的测试框架</span>
+                        <span class="card-title">clone对象</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            注解基础注解的本质是一个接口，该接口默认继承Annotation接口
-
-接口里面的成员方法称为注解的属性
-定义了属性，要在使用的时候给属性赋值
-如果定义属性时使用default关键字给属性默认初始值，则可以不进行赋值
-若只有一个属性且名为v
+                            在实际编程过程中，我们常常要遇到这种情况：有一个对象 A，在某一时刻 A 中已经包含了一些有效值，此时可能会需要一个和 A 完全相同新对象 B，并且此后对 B 任何改动都不会影响到 A 中的值，也就是说，A 与 B 是两个独立的对象，但 B
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-22
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-05
                         </span>
                         <span class="publish-author">
                             
@@ -781,22 +859,6 @@
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%B3%A8%E8%A7%A3/">
-                        <span class="chip bg-color">注解</span>
-                    </a>
-                    
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%B5%8B%E8%AF%95/">
-                        <span class="chip bg-color">测试</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -808,27 +870,29 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/01/29/bi-ji-zi-dong-hua-gou-jian-gong-ju-maven/">
+                <a href="/2020/03/13/servlet/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="笔记：自动化构建工具Maven">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Servlet">
                         
-                        <span class="card-title">笔记：自动化构建工具Maven</span>
+                        <span class="card-title">Servlet</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Maven的作用
-借助Maven可以将一个项目拆分为多个工程，避免因为项目太庞大不好管理和分工合作
-借助Maven可以将jar包紧紧保存在“仓库”中，有需要工程“引用”这个文件接口，并不需要真的把jar包复制过来
-下载jar包（可以以一种规
+                            
+Servlet就是一个接口，定义了Java类能被浏览器访问到(tomact识别)的规则
+
+使用servlet
+定义类，来实现servlet接口
+  public class ServletDemo01 implements Servlet
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-29
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-13
                             </span>
                         <span class="publish-author">
                             
@@ -837,22 +901,6 @@
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E7%AC%94%E8%AE%B0/">
-                        <span class="chip bg-color">笔记</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%9E%84%E5%BB%BA/">
-                        <span class="chip bg-color">构建</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%B7%A5%E5%85%B7/">
-                        <span class="chip bg-color">工具</span>
-                    </a>
-                    
                 </div>
                 
             </div>

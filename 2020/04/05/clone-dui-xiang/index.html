@@ -4,12 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="软考复习, Mao Qiu">
-    <meta name="description" content="计算机组成与体系结构计算机体系结构分类——Flynn
-
-单指令流单数据流：单处理器系统，老式PC机，多见于单片机系统。
-阵列处理机（典型单指令流多数据流代表）：适合处理数组类型的操作，例如：一条加法指令通过输入不同数据来得到一组结果。
-多指">
+    <meta name="keywords" content="clone对象, Mao Qiu">
+    <meta name="description" content="在实际编程过程中，我们常常要遇到这种情况：有一个对象 A，在某一时刻 A 中已经包含了一些有效值，此时可能会需要一个和 A 完全相同新对象 B，并且此后对 B 任何改动都不会影响到 A 中的值，也就是说，A 与 B 是两个独立的对象，但 B">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>软考复习 | Mao Qiu</title>
+    <title>clone对象 | Mao Qiu</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -307,12 +303,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">软考复习</h1>
+                    <h1 class="description center-align post-title">clone对象</h1>
                 </div>
             </div>
         </div>
@@ -441,7 +437,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-06
+                    2020-04-05
                 </div>
                 
 
@@ -458,68 +454,45 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="计算机组成与体系结构"><a href="#计算机组成与体系结构" class="headerlink" title="计算机组成与体系结构"></a>计算机组成与体系结构</h2><h3 id="计算机体系结构分类——Flynn"><a href="#计算机体系结构分类——Flynn" class="headerlink" title="计算机体系结构分类——Flynn"></a>计算机体系结构分类——Flynn</h3><p><img src="/2020/02/06/ruan-kao-fu-xi/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E5%88%86%E7%B1%BB-Flynn.png" alt="计算机体系结构分类-Flynn.png"></p>
-<ul>
-<li>单指令流单数据流：单处理器系统，老式PC机，多见于单片机系统。</li>
-<li>阵列处理机（典型单指令流多数据流代表）：适合处理数组类型的操作，例如：一条加法指令通过输入不同数据来得到一组结果。</li>
-<li>多指令单数据流是一种理论层次的模型。</li>
-<li>多指令流多数据流：当前很常见，例如集群式。</li>
-</ul>
-<h3 id="CISC与RISC"><a href="#CISC与RISC" class="headerlink" title="CISC与RISC"></a>CISC与RISC</h3><p><img src="/2020/02/06/ruan-kao-fu-xi/CISC%E4%B8%8ERISC.png" alt="CISC与RISC.png"></p>
-<ul>
-<li>CISC：在计算机还没普及的情况下提出来的，计算机属于奢饰品，找厂商定制计算机，从硬件到指令系统都是定制，要进行什么样的业务处理就设计什么样的指令。根据不同的用户就会有不同的指令，而且指令的数量会相当多。</li>
-</ul>
-<h3 id="流水线——概念"><a href="#流水线——概念" class="headerlink" title="流水线——概念"></a>流水线——概念</h3><ul>
-<li>数字1代表第一个指令，数字2代表第二个指令</li>
-</ul>
-<p><img src="/2020/02/06/ruan-kao-fu-xi/%E6%B5%81%E6%B0%B4%E7%BA%BF.png" alt="流水线.png"></p>
-<ul>
-<li>流水线的计算</li>
-</ul>
-<p><img src="/2020/02/06/ruan-kao-fu-xi/%E6%B5%81%E6%B0%B4%E7%BA%BF%E8%AE%A1%E7%AE%97.png" alt="流水线计算.png"></p>
-<ul>
-<li>流水线吞吐率的计算</li>
-</ul>
-<p><img src="/2020/02/06/ruan-kao-fu-xi/%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%90%9E%E5%90%90%E7%8E%87%E7%9A%84%E8%AE%A1%E7%AE%97.png" alt="流水线吞吐的率计算.png"></p>
-<ul>
-<li>流水线的加速比</li>
-</ul>
-<p><img src="/2020/02/06/ruan-kao-fu-xi/%E6%B5%81%E6%B0%B4%E7%BA%BF%E7%9A%84%E5%8A%A0%E9%80%9F%E6%AF%94.png" alt="流水线的加速比.png"></p>
-<ul>
-<li>流水线的效率</li>
-</ul>
-<p><img src="/2020/02/06/ruan-kao-fu-xi/%E6%B5%81%E6%B0%B4%E7%BA%BF%E7%9A%84%E6%95%88%E7%8E%87.png" alt="流水线的效率.png"></p>
-<h3 id="层次化存储结构"><a href="#层次化存储结构" class="headerlink" title="层次化存储结构"></a>层次化存储结构</h3><p><img src="/2020/02/06/ruan-kao-fu-xi/%E5%B1%82%E6%AC%A1%E5%8C%96%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84.png" alt="层次化存储结构.png"></p>
-<ul>
-<li>Cache不是必须的，CPU可以直接与内存进行交换，但是没有Cache的话，因为局部性原理（如循环体中的程序会暂时保存在Cache中，以便CPU快速读取）速度会极慢。</li>
-<li>按内容存取区别按地址存取</li>
-</ul>
-<h3 id="Cache"><a href="#Cache" class="headerlink" title="Cache"></a>Cache</h3><p><img src="/2020/02/06/ruan-kao-fu-xi/Cache.png" alt="Cache.png"></p>
-<h3 id="局部性原理"><a href="#局部性原理" class="headerlink" title="局部性原理"></a>局部性原理</h3><p><img src="/2020/02/06/ruan-kao-fu-xi/%E5%B1%80%E9%83%A8%E6%80%A7%E5%8E%9F%E7%90%86.png" alt="局部性原理.png"></p>
-<ul>
-<li>工作集原理：工作集是进程运行时被频繁访问的页面的集合。</li>
-</ul>
-<h3 id="主存"><a href="#主存" class="headerlink" title="主存"></a>主存</h3><ul>
-<li>主存分类</li>
-</ul>
-<p><img src="/2020/02/06/ruan-kao-fu-xi/%E4%B8%BB%E5%AD%98%E5%88%86%E7%B1%BB.png" alt="主存分类.png"></p>
-<ul>
-<li>主存编址</li>
-</ul>
-<p><img src="/2020/02/06/ruan-kao-fu-xi/%E4%B8%BB%E5%AD%98%E7%BC%96%E5%9D%80.png" alt="主存编址.png"></p>
-<h3 id="磁盘结构与参数"><a href="#磁盘结构与参数" class="headerlink" title="磁盘结构与参数"></a>磁盘结构与参数</h3><p><img src="/2020/02/06/ruan-kao-fu-xi/%E7%A3%81%E7%9B%98%E7%BB%93%E6%9E%84.png" alt="磁盘结构.png"></p>
-<p><img src="/2020/02/06/ruan-kao-fu-xi/%E7%A3%81%E7%9B%98%E8%AF%95%E9%A2%98.png" alt="磁盘试题.png"></p>
-<h3 id="计算机总线"><a href="#计算机总线" class="headerlink" title="计算机总线"></a>计算机总线</h3><p><img src="/2020/02/06/ruan-kao-fu-xi/%E6%80%BB%E7%BA%BF.png" alt="总线.png"></p>
-<h3 id="系统可靠性分析——串联系统与并联系统"><a href="#系统可靠性分析——串联系统与并联系统" class="headerlink" title="系统可靠性分析——串联系统与并联系统"></a>系统可靠性分析——串联系统与并联系统</h3><p><img src="/2020/02/06/ruan-kao-fu-xi/%E4%B8%B2%E8%81%94%E7%B3%BB%E7%BB%9F.png" alt="串联系统.png"></p>
-<p><img src="/2020/02/06/ruan-kao-fu-xi/%E5%B9%B6%E8%81%94%E7%B3%BB%E7%BB%9F.png" alt="并联系统.png"></p>
-<h3 id="系统可靠性分析——n模冗余系统与混合系统"><a href="#系统可靠性分析——n模冗余系统与混合系统" class="headerlink" title="系统可靠性分析——n模冗余系统与混合系统"></a>系统可靠性分析——n模冗余系统与混合系统</h3><p><img src="/2020/02/06/ruan-kao-fu-xi/%E5%86%97%E4%BD%99%E7%B3%BB%E7%BB%9F.png" alt="冗余系统.png"></p>
-<p><img src="/2020/02/06/ruan-kao-fu-xi/%E6%B7%B7%E5%90%88%E7%B3%BB%E7%BB%9F.png" alt="混合系统.png"></p>
-<h3 id="差错控制——CRC与海明校验码"><a href="#差错控制——CRC与海明校验码" class="headerlink" title="差错控制——CRC与海明校验码"></a>差错控制——CRC与海明校验码</h3><p><img src="/2020/02/06/ruan-kao-fu-xi/%E7%BC%96%E7%A0%81.png" alt="编码.png"></p>
-<ul>
-<li>循环校验码CRC（能检错不能纠错）</li>
-</ul>
-<p><img src="/2020/02/06/ruan-kao-fu-xi/%E6%A8%A12%E9%99%A4%E6%B3%95.png" alt="模2除法.png"></p>
-<p><img src="/2020/02/06/ruan-kao-fu-xi/CRC%E7%BC%96%E7%A0%81.png" alt="CRC编码.png"></p>
+                <pre><code>在实际编程过程中，我们常常要遇到这种情况：有一个对象 A，在某一时刻 A 中已经包含了一些有效值，此时可能会需要一个和 A 完全相同新对象 B，并且此后对 B 任何改动都不会影响到 A 中的值，也就是说，A 与 B 是两个独立的对象，但 B 的初始值是由 A 对象确定的。在 Java 语言中，用简单的赋值语句是不能满足这种需求的。要满足这种需求虽然有很多途径，但实现 clone（）方法是其中最简单，也是最高效的手段。</code></pre><h2 id="new-一个对象的过程和clone-一个对象的过程区别"><a href="#new-一个对象的过程和clone-一个对象的过程区别" class="headerlink" title="new 一个对象的过程和clone 一个对象的过程区别"></a>new 一个对象的过程和clone 一个对象的过程区别</h2><p>new 操作符是根据后面的类型来分配内存空间再调用构造函数，填充对象的各个域，这一步叫做对象的初始化，构造方法返回后，一个对象创建完毕，可以把他的引用（地址）发布到外部，在外部就可以使用这个引用操纵这个对象。<br>clone 在第一步是和 new 相似的，都是分配内存，调用 clone 方法时，分配的内存和原对象（即调用 clone 方法的对象）相同，然后再使用原对象中对应的各个域，填充新对象的域，填充完成之后，clone 方法返回，一个新的相同的对象被创建，同样可以把这个新对象的引用发布到外部。</p>
+<h2 id="Clone对象的使用"><a href="#Clone对象的使用" class="headerlink" title="Clone对象的使用"></a>Clone对象的使用</h2><h3 id="复制对象和复制引用的区别"><a href="#复制对象和复制引用的区别" class="headerlink" title="复制对象和复制引用的区别"></a>复制对象和复制引用的区别</h3><pre class=" language-java"><code class="language-java">Person p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token number">23</span><span class="token punctuation">,</span> <span class="token string">"zhang"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Person p1 <span class="token operator">=</span> p<span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>p1<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>可以把这种现象叫做引用的复制。上面代码执行完成之后， 内存中的情景如下图所示：<br><img src="/2020/04/05/clone-dui-xiang/%E5%AF%B9%E8%B1%A1%E5%BC%95%E7%94%A8.png" alt="引用内存模型"></p>
+<p>而下面的代码是真真正正的克隆了一个对象。</p>
+<pre class=" language-java"><code class="language-java">Person p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token number">23</span><span class="token punctuation">,</span> <span class="token string">"zhang"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Person p1 <span class="token operator">=</span> <span class="token punctuation">(</span>Person<span class="token punctuation">)</span> p<span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>以上代码执行完成后， 内存中的情景如下图所示：<br><img src="/2020/04/05/clone-dui-xiang/%E5%AF%B9%E8%B1%A1clone%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B.png" alt="对象clone内存模型"></p>
+<h3 id="深拷贝和浅拷贝"><a href="#深拷贝和浅拷贝" class="headerlink" title="深拷贝和浅拷贝"></a>深拷贝和浅拷贝</h3><p>由于 age 是基本数据类型， 那么对它的拷贝没有什么疑议，直接将一个 4 字节的整数值拷贝过来就行。但是 name是 String 类型的， 它只是一个引用， 指向一个真正的 String 对象，那么对它的拷贝有两种方式： 直接将原对象中的 name 的引用值拷贝给新对象的 name 字段， 或者是根据原 Person 对象中的 name 指向的字符串对象创建一个新的相同的字符串对象，将这个新字符串对象的引用赋给新拷贝的 Person 对象的 name 字段。这两种拷贝方式分别叫做浅拷贝和深拷贝。深拷贝和浅拷贝的原理如下图所示：</p>
+<p><img src="/2020/04/05/clone-dui-xiang/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D.png" alt="深拷贝和浅拷贝"></p>
+<p>如果想要深拷贝一个对象，这个对象必须要实现 Cloneable 接口，实现 clone方法，并且在 clone 方法内部，把该对象引用的其他对象也要 clone 一份，这就要求这个被引用的对象必须也要实现Cloneable 接口并且实现 clone 方法。那么，按照上面的结论，实现以下代码 Body 类组合了 Head 类，要想深拷贝Body 类，必须在 Body 类的 clone 方法中将 Head 类也要拷贝一份。代码如下：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Body</span> <span class="token keyword">implements</span> <span class="token class-name">Cloneable</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> Head head<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token function">Body</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token function">Body</span><span class="token punctuation">(</span>Head head<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>head <span class="token operator">=</span> head<span class="token punctuation">;</span><span class="token punctuation">}</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> Object <span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> CloneNotSupportedException <span class="token punctuation">{</span>
+        Body newBody <span class="token operator">=</span>  <span class="token punctuation">(</span>Body<span class="token punctuation">)</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        newBody<span class="token punctuation">.</span>head <span class="token operator">=</span> <span class="token punctuation">(</span>Head<span class="token punctuation">)</span> head<span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> newBody<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Head</span> <span class="token keyword">implements</span> <span class="token class-name">Cloneable</span><span class="token punctuation">{</span>
+        <span class="token keyword">public</span>  Face face<span class="token punctuation">;</span>
+        <span class="token keyword">public</span> <span class="token function">Head</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">protected</span> Object <span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> CloneNotSupportedException <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>  
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> CloneNotSupportedException <span class="token punctuation">{</span>
+        Body body <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Body</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Head</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Face</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Body body1 <span class="token operator">=</span> <span class="token punctuation">(</span>Body<span class="token punctuation">)</span> body<span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"body == body1 : "</span> <span class="token operator">+</span> <span class="token punctuation">(</span>body <span class="token operator">==</span> body1<span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"body.head == body1.head : "</span> <span class="token operator">+</span>  <span class="token punctuation">(</span>body<span class="token punctuation">.</span>head <span class="token operator">==</span> body1<span class="token punctuation">.</span>head<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span></code></pre>
 
             </div>
             <hr/>
@@ -545,7 +518,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://dullutus.github.io/2020/02/06/ruan-kao-fu-xi/">http://dullutus.github.io/2020/02/06/ruan-kao-fu-xi/</a>
+                    <a href="http://dullutus.github.io/2020/04/05/clone-dui-xiang/">http://dullutus.github.io/2020/04/05/clone-dui-xiang/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -746,34 +719,30 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/02/22/zi-ding-yi-zhu-jie-shi-zhan-jian-dan-de-ce-shi-kuang-jia/">
+                <a href="/2020/04/05/clone-dui-xiang/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="自定义注解实战：简单的测试框架">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="clone对象">
                         
-                        <span class="card-title">自定义注解实战：简单的测试框架</span>
+                        <span class="card-title">clone对象</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            注解基础注解的本质是一个接口，该接口默认继承Annotation接口
-
-接口里面的成员方法称为注解的属性
-定义了属性，要在使用的时候给属性赋值
-如果定义属性时使用default关键字给属性默认初始值，则可以不进行赋值
-若只有一个属性且名为v
+                            在实际编程过程中，我们常常要遇到这种情况：有一个对象 A，在某一时刻 A 中已经包含了一些有效值，此时可能会需要一个和 A 完全相同新对象 B，并且此后对 B 任何改动都不会影响到 A 中的值，也就是说，A 与 B 是两个独立的对象，但 B
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-22
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-05
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -782,22 +751,7 @@
                         </span>
                     </div>
                 </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%B3%A8%E8%A7%A3/">
-                        <span class="chip bg-color">注解</span>
-                    </a>
-                    
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%B5%8B%E8%AF%95/">
-                        <span class="chip bg-color">测试</span>
-                    </a>
-                    
-                </div>
+
                 
             </div>
         </div>
@@ -808,27 +762,28 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/01/29/bi-ji-zi-dong-hua-gou-jian-gong-ju-maven/">
+                <a href="/2020/03/14/request-response/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="笔记：自动化构建工具Maven">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Request&Response">
                         
-                        <span class="card-title">笔记：自动化构建工具Maven</span>
+                        <span class="card-title">Request&Response</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Maven的作用
-借助Maven可以将一个项目拆分为多个工程，避免因为项目太庞大不好管理和分工合作
-借助Maven可以将jar包紧紧保存在“仓库”中，有需要工程“引用”这个文件接口，并不需要真的把jar包复制过来
-下载jar包（可以以一种规
+                            request对象和response对象的原理    request和response对象是由服务器创建，我们来使用，request对象是来获取请求消息，response对象是来响应消息
+Resquest功能
+获取请求消息数据
+
+获取请求行
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-29
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-14
                             </span>
                         <span class="publish-author">
                             
@@ -837,22 +792,6 @@
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E7%AC%94%E8%AE%B0/">
-                        <span class="chip bg-color">笔记</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%9E%84%E5%BB%BA/">
-                        <span class="chip bg-color">构建</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%B7%A5%E5%85%B7/">
-                        <span class="chip bg-color">工具</span>
-                    </a>
-                    
                 </div>
                 
             </div>
