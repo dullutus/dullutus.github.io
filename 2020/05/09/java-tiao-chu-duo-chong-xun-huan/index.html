@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="两个对象值相同却有可能有不同的hashCode, Mao Qiu">
-    <meta name="description" content="hashCode是所有java对象的固有方法，如果不重载的话，返回的实际上是该对象在jvm的堆上的内存地址，而不同对象的内存地址肯定不同，所以这个hashCode也就肯定不同了。如果重载了的话，由于采用的算法的问题，有可能导致两个不同对象的">
+    <meta name="keywords" content="Java跳出多重循环, Mao Qiu">
+    <meta name="description" content="在最外层循环前加一个标记如 A，然后用 break A;可以跳出多重循环。（Java 中支持带标签的 break 和 continue 语句，作用有点类似于 C 和 C++中的 goto 语句，但是就像要避免使用 goto 一样，应该避免使">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>两个对象值相同却有可能有不同的hashCode | Mao Qiu</title>
+    <title>Java跳出多重循环 | Mao Qiu</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -303,12 +303,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">两个对象值相同却有可能有不同的hashCode</h1>
+                    <h1 class="description center-align post-title">Java跳出多重循环</h1>
                 </div>
             </div>
         </div>
@@ -429,10 +429,6 @@
                                 <span class="chip bg-color">Java</span>
                             </a>
                         
-                            <a href="/tags/JVM/">
-                                <span class="chip bg-color">JVM</span>
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -445,7 +441,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-04-09
+                    2020-05-09
                 </div>
                 
 
@@ -462,12 +458,36 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>hashCode是所有java对象的固有方法，如果不重载的话，返回的实际上是该对象在jvm的堆上的内存地址，而不同对象的内存地址肯定不同，所以这个hashCode也就肯定不同了。如果重载了的话，由于采用的算法的问题，有可能导致两个不同对象的hashCode相同。  </p>
-<p>Java 对于 eqauls 方法和 hashCode 方法是这样规定的：(1)如果两个对象相同（equals 方法返回 true），那么它们的 hashCode 值一定要相同；(2)如果两个对象的 hashCode 相同，它们并不一定相同。当然，你未必要按照要求去做，但是如果你违背了上述原则就会发现在使用容器时，相同的对象可以出现在 Set 集合中，同时增加新元素的效率会大大下降（对于使用哈希存储的系统，如果哈希码频繁的冲突将会造成存取性能急剧下降）。  </p>
-<p>在集合中，set集合是不允许元素重复的，当新添加一个元素的时候首先调用这个元素的hashCode方法，得到的哈希码作为这个元素的存储地址，如果这个地址上没有元素，则直接存储在这个地址上；如果这个地址上有元素，在调用equals方法比较，相同则不再存储，不相同的话就会产生冲突，会产生一个链接表，将这两个元素串起来放在同一个哈希码指定的位置上，而实际上会尽量避免哈希冲突。如果直接调用equals方法，当数据量过大时，每次都会调用一次equals方法，效率低。用hashCode方法比较减少对象比较次数，提高查找效率。  </p>
-<p> 哈希表是结合了直接寻址和链式寻址两种方式，所需要的就是将需要加入哈希表的数据首先计算哈希值，其实就是预先分个组，然后再将数据挂到分组后的链表后面，随着添加的数据越来越多，分组链上会挂接更多的数据，同一个分组链上的数据必定具有相同的哈希值，java中的hash函数返回的是int类型的，也就是说，最多允许存在2^32个分组，也是有限的，所以出现相同的哈希码就不稀奇了。</p>
-<hr>
-<p>《Java 编程思想》以及《重构：改善既有代码质量》中是这样介绍 equals 方法的：<br>首先 equals 方法必须满足自反性（x.equals(x)必须返回 true）、对称性（x.equals(y)返回 true 时，y.equals(x)也必须返回 true）、传递性（x.equals(y)和 y.equals(z)都返回 true 时，x.equals(z)也必须返回 true）和一致性（当x 和 y 引用的对象信息没有被修改时，多次调用 x.equals(y)应该得到同样的返回值），而且对于任何非 null 值的引用 x，x.equals(null)必须返回 false。实现高质量的 equals 方法的诀窍包括：1. 使用==操作符检查”参数是否为这个对象的引用”；2. 使用 instanceof 操作符检查”参数是否为正确的类型”；3. 对于类中的关键属性，检查参数传入对象的属性是否与之相匹配；4. 编写完 equals 方法后，问自己它是否满足对称性、传递性、一致性；5. 重写 equals 时总是要重写 hashCode；6. 不要将 equals 方法参数中的 Object 对象替换为其他的类型，在重写时不要忘掉@Override 注解。</p>
+                <p>在最外层循环前加一个标记如 A，然后用 break A;可以跳出多重循环。（Java 中支持带标签的 break 和 continue 语句，作用有点类似于 C 和 C++中的 goto 语句，但是就像要避免使用 goto 一样，应该避免使用带标签的 break 和 continue，因为它不会让你的程序变得更优雅，很多时候甚至有相反的作用）。</p>
+<pre class=" language-java"><code class="language-java">        String a1 <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+        String b1 <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+        A<span class="token operator">:</span>   <span class="token comment" spellcheck="true">//标记A</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token number">4</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            a1 <span class="token operator">=</span> <span class="token string">"外层循环第"</span><span class="token operator">+</span>i<span class="token operator">+</span><span class="token string">"层"</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> <span class="token number">4</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                b1 <span class="token operator">=</span> <span class="token string">"内层循环第"</span><span class="token operator">+</span>j<span class="token operator">+</span><span class="token string">"层"</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">==</span> j <span class="token operator">&amp;</span> <span class="token number">2</span> <span class="token operator">==</span> i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">break</span> A<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//跳出标记A</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a1<span class="token operator">+</span>b1<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>使用try/catch强制跳出循环：</p>
+<pre class=" language-java"><code class="language-java">        String a3 <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+        String b3 <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token number">3</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                a3 <span class="token operator">=</span> <span class="token string">"外层循环第"</span><span class="token operator">+</span>i<span class="token operator">+</span><span class="token string">"层"</span><span class="token punctuation">;</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> <span class="token number">3</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    b3 <span class="token operator">=</span> <span class="token string">"内层循环第"</span><span class="token operator">+</span>j<span class="token operator">+</span><span class="token string">"层"</span><span class="token punctuation">;</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">==</span> j <span class="token operator">&amp;</span> <span class="token number">2</span> <span class="token operator">==</span> i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Exception</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a3<span class="token operator">+</span>b3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span></code></pre>
 
             </div>
             <hr/>
@@ -493,7 +513,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://dullutus.github.io/2020/04/09/liang-ge-dui-xiang-zhi-xiang-tong-que-you-ke-neng-you-bu-tong-de-hashcode/">http://dullutus.github.io/2020/04/09/liang-ge-dui-xiang-zhi-xiang-tong-que-you-ke-neng-you-bu-tong-de-hashcode/</a>
+                    <a href="http://dullutus.github.io/2020/05/09/java-tiao-chu-duo-chong-xun-huan/">http://dullutus.github.io/2020/05/09/java-tiao-chu-duo-chong-xun-huan/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -533,10 +553,6 @@
                             
                                 <a href="/tags/Java/">
                                     <span class="chip bg-color">Java</span>
-                                </a>
-                            
-                                <a href="/tags/JVM/">
-                                    <span class="chip bg-color">JVM</span>
                                 </a>
                             
                         </div>
@@ -702,9 +718,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/05/09/java-tiao-chu-duo-chong-xun-huan/">
                     <div class="card-image">
@@ -722,9 +739,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-05-09
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-09
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -733,6 +750,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -751,24 +769,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/04/05/clone-dui-xiang/">
+                <a href="/2020/04/09/liang-ge-dui-xiang-zhi-xiang-tong-que-you-ke-neng-you-bu-tong-de-hashcode/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="clone对象">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="两个对象值相同却有可能有不同的hashCode">
                         
-                        <span class="card-title">clone对象</span>
+                        <span class="card-title">两个对象值相同却有可能有不同的hashCode</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            在实际编程过程中，我们常常要遇到这种情况：有一个对象 A，在某一时刻 A 中已经包含了一些有效值，此时可能会需要一个和 A 完全相同新对象 B，并且此后对 B 任何改动都不会影响到 A 中的值，也就是说，A 与 B 是两个独立的对象，但 B
+                            hashCode是所有java对象的固有方法，如果不重载的话，返回的实际上是该对象在jvm的堆上的内存地址，而不同对象的内存地址肯定不同，所以这个hashCode也就肯定不同了。如果重载了的话，由于采用的算法的问题，有可能导致两个不同对象的
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-09
                             </span>
                         <span class="publish-author">
                             
@@ -783,6 +801,10 @@
                     
                     <a href="/tags/Java/">
                         <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/JVM/">
+                        <span class="chip bg-color">JVM</span>
                     </a>
                     
                 </div>
