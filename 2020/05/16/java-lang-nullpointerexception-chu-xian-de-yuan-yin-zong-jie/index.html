@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Java跳出多重循环, Mao Qiu">
-    <meta name="description" content="在最外层循环前加一个标记如 A，然后用 break A;可以跳出多重循环。（Java 中支持带标签的 break 和 continue 语句，作用有点类似于 C 和 C++中的 goto 语句，但是就像要避免使用 goto 一样，应该避免使">
+    <meta name="keywords" content="java.lang.NullPointerException出现的原因总结, Mao Qiu">
+    <meta name="description" content="java.lang.NullPointerException出现的几种原因NullPointerException由RuntimeException派生出来，是一个运行时异常。其意指可能会在运行的时候才会被抛出，一个变量是null,及只有其">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Java跳出多重循环 | Mao Qiu</title>
+    <title>java.lang.NullPointerException出现的原因总结 | Mao Qiu</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -303,12 +303,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Java跳出多重循环</h1>
+                    <h1 class="description center-align post-title">java.lang.NullPointerException出现的原因总结</h1>
                 </div>
             </div>
         </div>
@@ -441,7 +441,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-05-09
+                    2020-05-16
                 </div>
                 
 
@@ -458,36 +458,14 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>在最外层循环前加一个标记如 A，然后用 break A;可以跳出多重循环。（Java 中支持带标签的 break 和 continue 语句，作用有点类似于 C 和 C++中的 goto 语句，但是就像要避免使用 goto 一样，应该避免使用带标签的 break 和 continue，因为它不会让你的程序变得更优雅，很多时候甚至有相反的作用）。</p>
-<pre class=" language-java"><code class="language-java">        String a1 <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
-        String b1 <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
-        A<span class="token operator">:</span>   <span class="token comment" spellcheck="true">//标记A</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token number">4</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            a1 <span class="token operator">=</span> <span class="token string">"外层循环第"</span><span class="token operator">+</span>i<span class="token operator">+</span><span class="token string">"层"</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> <span class="token number">4</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                b1 <span class="token operator">=</span> <span class="token string">"内层循环第"</span><span class="token operator">+</span>j<span class="token operator">+</span><span class="token string">"层"</span><span class="token punctuation">;</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">==</span> j <span class="token operator">&amp;</span> <span class="token number">2</span> <span class="token operator">==</span> i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                    <span class="token keyword">break</span> A<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//跳出标记A</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a1<span class="token operator">+</span>b1<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>使用try/catch强制跳出循环：</p>
-<pre class=" language-java"><code class="language-java">        String a3 <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
-        String b3 <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
-        <span class="token keyword">try</span> <span class="token punctuation">{</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token number">3</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                a3 <span class="token operator">=</span> <span class="token string">"外层循环第"</span><span class="token operator">+</span>i<span class="token operator">+</span><span class="token string">"层"</span><span class="token punctuation">;</span>
-                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> <span class="token number">3</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                    b3 <span class="token operator">=</span> <span class="token string">"内层循环第"</span><span class="token operator">+</span>j<span class="token operator">+</span><span class="token string">"层"</span><span class="token punctuation">;</span>
-                    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">==</span> j <span class="token operator">&amp;</span> <span class="token number">2</span> <span class="token operator">==</span> i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Exception</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    <span class="token punctuation">}</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>a3<span class="token operator">+</span>b3<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span></code></pre>
+                <h2 id="java-lang-NullPointerException出现的几种原因"><a href="#java-lang-NullPointerException出现的几种原因" class="headerlink" title="java.lang.NullPointerException出现的几种原因"></a>java.lang.NullPointerException出现的几种原因</h2><p>NullPointerException由RuntimeException派生出来，是一个运行时异常。其意指可能会在运行的时候才会被抛出，一个变量是null,及只有其名,没有实值内容,也没分配内存,当你要去取他的长度,对他进行操作就会出现NullPointException,所以声明变量时最好给它分配好内存空间，给予赋值，例如拿该变量与一个值比较时，要么先做好该异常的处理要么给它进行判断先： if (str ！=null &amp;&amp; str “”){ …}<br>判断一个String的实例s是否等于“a”时，不要写成s.equals(“a”)，这样容易抛NullPointerException，而写成”a”.equals(s)就可以避免这个问题，不过对变量先进行判空后再进行操作更好，尽量避免返回null，方法的返回值不要定义成为一般的类型，用数组。这样如果想要返回null的时候，就返回一个没有元素的数组。就能避免许多不必要的NullPointerException</p>
+<p>1、字符串变量未初始化  </p>
+<p>2、接口类型的对象没有用具体的类初始化，比如：<br>Map map // 会报错<br>Map map = new Map(); //则不会报错了  </p>
+<p>3、当一个对象的值为空时，你没有判断为空的情况。  </p>
+<p>4、字符串与文字的比较，文字可以是一个字符串或Enum的元素，如下会出现异常<br>String str = null;<br>if（str.equals（“Test”））{<br>//这里的代码将不会被触发，因为会抛出java.lang.NullPointerException异常。<br>}  </p>
+<p>5、优先使用String.valueOf（）方法代替toString（）<br>当程序代码需要对象的字符串表示形式时，请避免使用该对象的toString方法。如果你的对象的引用等于null，NullPointerException则会抛出，使用静态String.valueOf方法，该方法不会抛出任何异常并打印”null”  </p>
+<p>6、class被声明了类型， 默认 class = null; 这样在调用class中方法的时候系统只能给你个空指针异常， 给其实例化就好了：class = new Class();  </p>
+<p>7、返回null，方法的返回值不要定义成为一般的类型，而是用数组。这样如果想要返回null的时候就能避免许多不必要的NullPointerException</p>
 
             </div>
             <hr/>
@@ -513,7 +491,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://dullutus.github.io/2020/05/09/java-tiao-chu-duo-chong-xun-huan/">http://dullutus.github.io/2020/05/09/java-tiao-chu-duo-chong-xun-huan/</a>
+                    <a href="http://dullutus.github.io/2020/05/16/java-lang-nullpointerexception-chu-xian-de-yuan-yin-zong-jie/">http://dullutus.github.io/2020/05/16/java-lang-nullpointerexception-chu-xian-de-yuan-yin-zong-jie/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -718,9 +696,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/05/16/java-lang-nullpointerexception-chu-xian-de-yuan-yin-zong-jie/">
                     <div class="card-image">
@@ -738,9 +717,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-05-16
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -749,6 +728,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -767,24 +747,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/04/09/liang-ge-dui-xiang-zhi-xiang-tong-que-you-ke-neng-you-bu-tong-de-hashcode/">
+                <a href="/2020/05/09/java-tiao-chu-duo-chong-xun-huan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="两个对象值相同却有可能有不同的hashCode">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Java跳出多重循环">
                         
-                        <span class="card-title">两个对象值相同却有可能有不同的hashCode</span>
+                        <span class="card-title">Java跳出多重循环</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            hashCode是所有java对象的固有方法，如果不重载的话，返回的实际上是该对象在jvm的堆上的内存地址，而不同对象的内存地址肯定不同，所以这个hashCode也就肯定不同了。如果重载了的话，由于采用的算法的问题，有可能导致两个不同对象的
+                            在最外层循环前加一个标记如 A，然后用 break A;可以跳出多重循环。（Java 中支持带标签的 break 和 continue 语句，作用有点类似于 C 和 C++中的 goto 语句，但是就像要避免使用 goto 一样，应该避免使
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-09
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-09
                             </span>
                         <span class="publish-author">
                             
@@ -799,10 +779,6 @@
                     
                     <a href="/tags/Java/">
                         <span class="chip bg-color">Java</span>
-                    </a>
-                    
-                    <a href="/tags/JVM/">
-                        <span class="chip bg-color">JVM</span>
                     </a>
                     
                 </div>

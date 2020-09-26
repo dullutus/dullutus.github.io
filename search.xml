@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>java.lang.NullPointerException出现的原因总结</title>
+      <link href="/2020/05/16/java-lang-nullpointerexception-chu-xian-de-yuan-yin-zong-jie/"/>
+      <url>/2020/05/16/java-lang-nullpointerexception-chu-xian-de-yuan-yin-zong-jie/</url>
+      
+        <content type="html"><![CDATA[<h2 id="java-lang-NullPointerException出现的几种原因"><a href="#java-lang-NullPointerException出现的几种原因" class="headerlink" title="java.lang.NullPointerException出现的几种原因"></a>java.lang.NullPointerException出现的几种原因</h2><p>NullPointerException由RuntimeException派生出来，是一个运行时异常。其意指可能会在运行的时候才会被抛出，一个变量是null,及只有其名,没有实值内容,也没分配内存,当你要去取他的长度,对他进行操作就会出现NullPointException,所以声明变量时最好给它分配好内存空间，给予赋值，例如拿该变量与一个值比较时，要么先做好该异常的处理要么给它进行判断先： if (str ！=null &amp;&amp; str “”){ …}<br>判断一个String的实例s是否等于“a”时，不要写成s.equals(“a”)，这样容易抛NullPointerException，而写成”a”.equals(s)就可以避免这个问题，不过对变量先进行判空后再进行操作更好，尽量避免返回null，方法的返回值不要定义成为一般的类型，用数组。这样如果想要返回null的时候，就返回一个没有元素的数组。就能避免许多不必要的NullPointerException</p><p>1、字符串变量未初始化  </p><p>2、接口类型的对象没有用具体的类初始化，比如：<br>Map map // 会报错<br>Map map = new Map(); //则不会报错了  </p><p>3、当一个对象的值为空时，你没有判断为空的情况。  </p><p>4、字符串与文字的比较，文字可以是一个字符串或Enum的元素，如下会出现异常<br>String str = null;<br>if（str.equals（“Test”））{<br>//这里的代码将不会被触发，因为会抛出java.lang.NullPointerException异常。<br>}  </p><p>5、优先使用String.valueOf（）方法代替toString（）<br>当程序代码需要对象的字符串表示形式时，请避免使用该对象的toString方法。如果你的对象的引用等于null，NullPointerException则会抛出，使用静态String.valueOf方法，该方法不会抛出任何异常并打印”null”  </p><p>6、class被声明了类型， 默认 class = null; 这样在调用class中方法的时候系统只能给你个空指针异常， 给其实例化就好了：class = new Class();  </p><p>7、返回null，方法的返回值不要定义成为一般的类型，而是用数组。这样如果想要返回null的时候就能避免许多不必要的NullPointerException</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Java跳出多重循环</title>
       <link href="/2020/05/09/java-tiao-chu-duo-chong-xun-huan/"/>
       <url>/2020/05/09/java-tiao-chu-duo-chong-xun-huan/</url>
